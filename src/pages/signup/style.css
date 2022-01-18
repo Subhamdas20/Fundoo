@@ -19,35 +19,37 @@
 }
 
 .fn {
-    width: 83%;
+    width: 100%;
 }
 
 .ln {
-    width: 83%;
+    width: 100%;
 }
 
 .email {
-    width: 83%;
+    width: 100%;
 }
 
 .pass {
-    width: 83%;
+    width: 100%;
 }
 
 .passc {
-    width: 83%;
+    width: 100%;
 }
 
 .firstn {
     padding-top: 10px;
+    padding-bottom: 24px;
 }
 
 .lastn {
-    padding-top: 24px;
+    padding-top: 10px;
+    padding-bottom: 24px;
 }
 
 .emaild {
-    padding-top: 24px;
+    /* padding-top: 24px; */
 }
 
 .password {
@@ -79,7 +81,6 @@
 .signin{
     color: #1A73E8; 
     font-weight: 600;
-  
     margin-top: 24px;
 }
 .last{
@@ -100,11 +101,53 @@
     margin-left: 5%;
 }
 
-@media (max-width: 376px) {
+
+@media screen  and (max-width: 430px) {
     .form {
         display: flex;
         font-size: 14px;
         padding: 0px 24px 36px;
         width: 100%;
     }
+}
+@media screen and (min-width: 431px) and (max-width : 770px){
+    .form{
+        display: flex;
+        padding: 0px 24px 36px;
+    }
+    .first-last{
+        display: flex;
+        padding-top: 0px;
+    }
+    .border{
+        margin-left: 20% ;
+        margin-top: 15%;
+        margin-right: 20%;
+        margin-bottom: 15%;
+        border-style: ridge;
+        border-radius: 8px;
+        border-width: 1px;
+
+    }
+    .confirm-pass{
+        display: flex;
+        justify-content: space-between;
+    }
+    .fn{
+        width: 87%;
+    }
+    .ln{
+        width: 83%;
+    }
+    .email{
+        width: 89%;
+    }
+    .pass{
+        width: 100%
+    }
+    .passc{
+        width: 70%;
+        padding-left: 5%;
+        margin-left: 5%;
+     } 
 }

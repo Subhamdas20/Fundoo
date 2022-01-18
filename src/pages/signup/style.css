@@ -109,6 +109,9 @@
         padding: 0px 24px 36px;
         width: 100%;
     }
+    .image{
+        display: none;
+    }
 }
 @media screen and (min-width: 600px) and (max-width : 770px){
     .form{
@@ -152,4 +155,58 @@
         width: 40% ;
         margin-left: 10%;
      } 
+     .image{
+         display: none;
+     }
+}
+
+@media screen and (min-width: 770px) and (max-width : 1440px) {
+
+    .border{
+        display: flex;
+   
+        margin-left: 10% !important;
+        margin-top: 10% !important;
+        margin-right: 10% !important;
+        margin-bottom: 4% !important;
+        border-style: ridge;
+        border-radius: 8px;
+        border-width: 1px;
+    }
+    .content{
+        margin-left: 10px;
+    }
+    .first-last{
+        display: flex;
+       
+    }
+    .form{
+        display: flex;
+        padding: 0px 24px 36px;
+    }
+ 
+    .lastn{
+        margin-left: 9%;
+        width: 40%;
+    }
+    .firstn{
+        width: 40%;
+    }
+    .email{
+        width: 89%;
+    }
+    .password{
+        width: 40% ;
+     
+    }
+    .passwordc{
+        width: 40% ;
+        margin-left: 10%;
+     } 
+     .confirm-pass{
+        display: flex ;
+    }
+    .image{
+        margin-top: 15%;
+    }
 }

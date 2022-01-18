@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import "./style.css"
 import TextField from '@mui/material/TextField';
-
+import logo from '../../images/logo.png'
 export class SignUp extends Component {
 
     render() {
         return (
 
             <div className='border'>
-                <div >
+                <div className='content' >
                     <h2 className='g1' >
                         <font color="#0A5BB4" > F </font>
                         <font color="#C11D38" > U </font>
@@ -38,7 +38,7 @@ export class SignUp extends Component {
                                 label="Password"
                                 variant="outlined"
                                 size='small'
-                                className='pass' /> 
+                                className='pass' />
                             </div>
                             <div className='passwordc' >
                                 <TextField id="outlined-basic"
@@ -46,7 +46,7 @@ export class SignUp extends Component {
                                     variant="outlined"
                                     size='small'
                                     className='passc'
-                                    helperText='Use 8 or more characters with a mix of letters, numbers & symbols' /> 
+                                    helperText='Use 8 or more characters with a mix of letters, numbers & symbols' />
                             </div>
                         </div>
                         <div className='checkbox'>
@@ -58,6 +58,10 @@ export class SignUp extends Component {
                             <button className='next'>Next</button>
                         </div>
                     </form>
+                </div>
+                <div className='image'>
+                    <div className='img'> <img src={logo} alt="logo" /> </div>
+                    <span>One account. All of Fundoo working for you.</span>
                 </div>
             </div>
         )

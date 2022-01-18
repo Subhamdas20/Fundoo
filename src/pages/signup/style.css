@@ -64,13 +64,40 @@
     font-family: "Google Sans", Arial, sans-serif;
     padding-top: 12px;
     padding-bottom: 24px;
+    font-weight: 600;
 }
 
 .checkbox {
     display: flex;
     margin-top: 10px;
+   
     font-size: 14px;
     font-weight: 500;
+    
+
+}
+.signin{
+    color: #1A73E8; 
+    font-weight: 600;
+  
+    margin-top: 24px;
+}
+.last{
+    display: flex;
+    /* justify-content: space-evenly; */
+
+
+}
+.next{
+    margin-left: 25%;
+    color: white;
+    text-align: center;
+    background-color:#4386dd;
+    width : 25%;
+    border-radius: 8px
+}
+.show{
+    margin-left: 5%;
 }
 
 @media (max-width: 376px) {

@@ -46,13 +46,17 @@ export class SignUp extends Component {
                                 className='passc'
                                 helperText='Use 8 or more characters with a mix of letters, numbers & symbols' /> </div>
                     </div>
-                    <div className='checkbox' ></div><input type="checkbox" className='' />
-                    <div> Show password </div>
-
-
+                    <div className='checkbox'>
+                        <div className='checkbox' ></div><input type="checkbox" className='' />
+                        <div className='show'> Show password </div>
+                    </div>
+                    <div className='last'>
+                        <div className='signin'>Sign in instead</div>
+                        <button className='next'>Next</button> 
+                       
+                    </div>
                 </form>
             </div>
-
         )
     }
 }

@@ -1,0 +1,83 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    width: 100%;
+}
+
+.g1 {
+    padding: 0px;
+    margin-left: 24px;
+}
+
+.h1 {
+    font-family: 'Google Sans';
+    font-weight: 400;
+    font-size: 24px;
+    margin-bottom: 24px;
+    margin-left: 24px;
+}
+
+.fn {
+    width: 83%;
+}
+
+.ln {
+    width: 83%;
+}
+
+.email {
+    width: 83%;
+}
+
+.pass {
+    width: 83%;
+}
+
+.passc {
+    width: 83%;
+}
+
+.firstn {
+    padding-top: 10px;
+}
+
+.lastn {
+    padding-top: 24px;
+}
+
+.emaild {
+    padding-top: 24px;
+}
+
+.password {
+    padding-top: 24px;
+}
+
+.passwordc {
+    padding-top: 24px;
+}
+
+.email-option {
+    color: #1A73E8;
+    font: 14px;
+    font-family: "Google Sans", Arial, sans-serif;
+    padding-top: 12px;
+    padding-bottom: 24px;
+}
+
+.checkbox {
+    display: flex;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+@media (max-width: 376px) {
+    .form {
+        display: flex;
+        font-size: 14px;
+        padding: 0px 24px 36px;
+        width: 100%;
+    }
+}

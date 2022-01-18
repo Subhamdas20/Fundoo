@@ -38,14 +38,16 @@ export class SignUp extends Component {
                                 label="Password"
                                 variant="outlined"
                                 size='small'
-                                className='pass' /> </div>
+                                className='pass' /> 
+                            </div>
                             <div className='passwordc' >
                                 <TextField id="outlined-basic"
                                     label="confirm Password"
                                     variant="outlined"
                                     size='small'
                                     className='passc'
-                                    helperText='Use 8 or more characters with a mix of letters, numbers & symbols' /> </div>
+                                    helperText='Use 8 or more characters with a mix of letters, numbers & symbols' /> 
+                            </div>
                         </div>
                         <div className='checkbox'>
                             <div className='checkbox' ></div><input type="checkbox" className='' />
@@ -54,7 +56,6 @@ export class SignUp extends Component {
                         <div className='last'>
                             <div className='signin'>Sign in instead</div>
                             <button className='next'>Next</button>
-
                         </div>
                     </form>
                 </div>

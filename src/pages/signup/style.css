@@ -102,7 +102,7 @@
 }
 
 
-@media screen  and (max-width: 430px) {
+@media screen  and (max-width: 600px) {
     .form {
         display: flex;
         font-size: 14px;
@@ -110,15 +110,16 @@
         width: 100%;
     }
 }
-@media screen and (min-width: 431px) and (max-width : 770px){
+@media screen and (min-width: 600px) and (max-width : 770px){
     .form{
         display: flex;
         padding: 0px 24px 36px;
     }
     .first-last{
         display: flex;
-        padding-top: 0px;
+       
     }
+ 
     .border{
         margin-left: 20% ;
         margin-top: 15%;
@@ -130,11 +131,12 @@
 
     }
     .confirm-pass{
-        display: flex;
-        justify-content: space-between;
+        display: flex ;
+        /* justify-content:space-between; */
+        
     }
     .fn{
-        width: 87%;
+        width: 83%;
     }
     .ln{
         width: 83%;
@@ -142,12 +144,12 @@
     .email{
         width: 89%;
     }
-    .pass{
-        width: 100%
+    .password{
+        width: 40% ;
+     
     }
-    .passc{
-        width: 70%;
-        padding-left: 5%;
-        margin-left: 5%;
+    .passwordc{
+        width: 40% ;
+        margin-left: 10%;
      } 
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import TextField from '@mui/material/TextField';
 import './forgetpassword.scss'
 function Forgetpassword() {
-  return <div className='container'>
+  return <div className='main'>
        <div> <h3 className='fun' >
             <font color="#0A5BB4" > F </font>
             <font color="#C11D38" > U </font>

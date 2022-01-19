@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import './forgetemail.scss'
 function Forgetemail() {
   return <div className='main'>
-      <div> <h3 className='g1' >
+      <div> <h3 className='fun' >
                 <font color="#0A5BB4" > F </font>
                 <font color="#C11D38" > U </font>
                 <font color="#EDF750" > N </font>
@@ -20,7 +20,7 @@ function Forgetemail() {
                     size='small'
                     className='emailid' />
         </div>
-        <div ><button className='button'>Next</button></div>
+        <div className='next-button'><button className='button'>Next</button></div>
   </div>
 }
 

@@ -1,0 +1,63 @@
+
+@mixin flex ($dis,$dir){
+    display: $dis;
+    flex-direction: $dir;
+}
+@mixin font-color ($colour,$size){
+    color: $colour;
+    font-size: $size
+    
+}
+.main{
+@include flex('flex','column');
+    border-style: ridge;
+    border-radius: 8px;
+    border-width: 1px;
+    width :40%;
+    height: 60vh;
+    margin-left: 30%;
+    margin-top: 5%;
+    padding-left: 3%;
+    padding-right: 1%;
+
+  .g1{
+    @include flex('flex','row');
+    margin-left: 30%;
+  }
+  .signin{
+      color: black;
+      font-weight: 400;
+      font-size: 24px;
+      margin-left: 33%; 
+  }
+  .fundoo{
+      margin-left: 20%;
+      margin-top: 10px;
+      margin-bottom: 14px;
+  }
+  .forgot{
+    @include font-color(#1A73E8, 14px);
+    margin-bottom: 24px;
+  }
+  .text{
+      font-size: 14px;
+    .learn{
+        @include font-color(#1A73E8, 14px);
+        margin-bottom: 24px
+      }
+  }
+  
+  .create{
+    @include font-color(#1A73E8, 14px);
+    @include flex(flex,row);
+    .button{
+        margin-left: 50%;
+        background-color:#4386dd;
+        color:whitesmoke;
+        width : 15%;
+
+        border-radius: 2px
+    }
+  }
+ 
+}

@@ -86,8 +86,6 @@
 .last{
     display: flex;
     /* justify-content: space-evenly; */
-
-
 }
 .next{
     margin-left: 25%;
@@ -160,21 +158,23 @@
      }
 }
 
-@media screen and (min-width: 770px) and (max-width : 1440px) {
+@media screen and (min-width: 770px)   {
 
     .border{
         display: flex;
-   
         margin-left: 10% !important;
-        margin-top: 10% !important;
+        margin-top: 2% !important;
         margin-right: 10% !important;
-        margin-bottom: 4% !important;
+        margin-bottom: 2% !important;
         border-style: ridge;
         border-radius: 8px;
         border-width: 1px;
     }
     .content{
-        margin-left: 10px;
+       
+        width: 60%;
+        height: 60%;
+
     }
     .first-last{
         display: flex;
@@ -208,5 +208,6 @@
     }
     .image{
         margin-top: 15%;
+        margin-left: 1%;
     }
 }

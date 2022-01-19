@@ -1,0 +1,32 @@
+
+.main{
+    height: 80vw;
+    // align-items: center;
+    .findemail{
+        
+        // align-items: center;
+        font-weight: 400;
+        font-size: 24px;
+        // margin-left: 25%;
+        // margin: 0 auto;
+        // justify-content: center;
+        margin-bottom: 14px;
+    }
+    .recover{
+        font-size: 16px;
+        margin-left: 10%;
+        margin-bottom: 24px;
+    }
+    .emailid{
+        width: 80%;
+        margin-bottom: 24px;
+    }
+    .button{
+        margin-left: 65%;
+        background-color:#4386dd;
+        color:whitesmoke;
+        width : 15%;
+        border-radius: 2px
+        
+    }
+}

@@ -1,9 +1,9 @@
 import React from 'react';
 import TextField from '@mui/material/TextField';
-import './forgetemail.scss'
-function Forgetemail() {
-    return <div className='main'>
-        <div> <h3 className='fun' >
+import './forgetpassword.scss'
+function Forgetpassword() {
+  return <div className='container'>
+       <div> <h3 className='fun' >
             <font color="#0A5BB4" > F </font>
             <font color="#C11D38" > U </font>
             <font color="#EDF750" > N </font>
@@ -12,16 +12,18 @@ function Forgetemail() {
             <font color="#8D1F38" > O  </font>
         </h3>
         </div>
-        <div className='findemail'>Find Your email</div>
-        <div className='recover'>Enter your recovery email</div>
-        <div><TextField id="outlined-basic"
-            label="Email"
+        <div className='findemail'>Reset Your password</div>
+        <div className='recover'>Enter your password</div>
+        <div><TextField id="outlined-password-input"
+            type="password"
+            label="password"
             variant="outlined"
             size='small'
-            className='emailid' />
+            className='password-field' />
         </div>
         <div className='next-button'><button className='button'>Next</button></div>
-    </div>
+  </div>;
 }
 
-export default Forgetemail;
+export default Forgetpassword;
+

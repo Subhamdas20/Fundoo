@@ -1,5 +1,5 @@
-
 import Forgetemail from './pages/forgetemail/Forgetemail';
+import Forgetpassword from './pages/forgetpassword/Forgetpassword';
 import Signin from './pages/signin/Signin';
 import SignUp from './pages/signup/SignUp';
 
@@ -9,7 +9,9 @@ function App() {
     <div>
        {/* <SignUp />  */}
       {/* <Signin/> */}
-      <Forgetemail/>
+      {/* <Forgetemail/> */}
+      <Forgetpassword/>
+      
     
     </div>
   );

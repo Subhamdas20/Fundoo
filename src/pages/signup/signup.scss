@@ -1,3 +1,12 @@
+
+
+.app-container{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    height: 100%;
+}
+
 .form {
     display: flex;
     flex-direction: column;
@@ -66,17 +75,14 @@
     font-family: "Google Sans", Arial, sans-serif;
     padding-top: 12px;
     padding-bottom: 24px;
-    font-weight: 600;
+    font-weight: 549;
 }
 
 .checkbox {
     display: flex;
     margin-top: 10px;
-   
     font-size: 14px;
     font-weight: 500;
-    
-
 }
 .signin{
     color: #1A73E8; 
@@ -99,6 +105,11 @@
     margin-left: 5%;
 }
 
+.button{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
 
 @media screen  and (max-width: 600px) {
     .form {
@@ -133,7 +144,7 @@
     }
     .confirm-pass{
         display: flex ;
-        /* justify-content:space-between; */
+       
         
     }
     .fn{
@@ -161,53 +172,65 @@
 @media screen and (min-width: 770px)   {
 
     .border{
+        width: 48%;
+        height: 40%;
         display: flex;
-        margin-left: 10% !important;
-        margin-top: 2% !important;
-        margin-right: 10% !important;
-        margin-bottom: 2% !important;
-        border-style: ridge;
+        justify-content: center;
+        align-items: center;
+        margin-top: 3% !important;
+        margin-bottom: 5% !important;
         border-radius: 8px;
-        border-width: 1px;
+        border: 1px solid #dadce0;
+        
     }
     .content{
-       
         width: 60%;
-        height: 60%;
+        /* height: 40%; */
 
     }
     .first-last{
         display: flex;
+        width: 90%;
+        justify-content: space-between;
        
     }
     .form{
         display: flex;
-        padding: 0px 24px 36px;
+        padding: 0px 0px 36px;
     }
  
     .lastn{
-        margin-left: 9%;
-        width: 40%;
+        // margin-left: 9%;
+        width: 49%;
     }
     .firstn{
-        width: 40%;
+        width: 49%;
     }
     .email{
         width: 89%;
     }
     .password{
-        width: 40% ;
+        width: 49% ;
      
     }
     .passwordc{
-        width: 40% ;
-        margin-left: 10%;
+        width: 49% ;
+        // margin-left: 10%;
      } 
      .confirm-pass{
+         width: 90%;
         display: flex ;
+        justify-content: space-between;
+
     }
     .image{
-        margin-top: 15%;
+        
+        width: 25%;
         margin-left: 1%;
     }
+   
+    .checkbox{
+        margin-bottom: 24px;
+    }
+    
 }

@@ -8,9 +8,9 @@ function App() {
   return (
     <div>
        {/* <SignUp />  */}
-      {/* <Signin/> */}
+      <Signin/>
       {/* <Forgetemail/> */}
-      <Forgetpassword/>
+      {/* <Forgetpassword/> */}
       
     
     </div>

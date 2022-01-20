@@ -21,6 +21,7 @@
 
 .h1 {
     font-family: 'Google Sans';
+    // font-family: "Noto Sans Mono";
     font-weight: 400;
     font-size: 24px;
     margin-bottom: 24px;
@@ -73,6 +74,7 @@
     color: #1A73E8;
     font: 14px;
     font-family: "Google Sans", Arial, sans-serif;
+    // font-family: "Noto Sans Mono";
     padding-top: 12px;
     padding-bottom: 24px;
     font-weight: 549;
@@ -109,6 +111,7 @@
     display: flex;
     justify-content: space-between;
     width: 90%;
+    margin-bottom: 48px;
 }
 
 @media screen  and (max-width: 600px) {

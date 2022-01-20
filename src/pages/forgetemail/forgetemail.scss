@@ -4,12 +4,24 @@
     display: $display;
     justify-content: $juscon;
 }
-
+.container-page{
+    @include flex(95%,flex,center);
+    height: 100vh;
+    align-items: center;
+}
 .main{
+    border-radius: 8px;
+    border: 1px solid #dadce0;
+      width :28%;
+      height: 70vh;
+      padding-left: 3%;
+      padding-right: 1%;
+
+     
+
     .fun{
         @include flex(100%,flex,center);
     }
-    height: 80vw;
     
     .findemail{
         @include flex(100%,flex,center);
@@ -22,7 +34,7 @@
         font-size: 16px;
         margin-bottom: 24px;
     }
-    .emailid{
+    .password-field{
         @include flex(90%,flex,center);
         margin-bottom: 24px;
     }
@@ -31,7 +43,8 @@
         .button{
             @include flex(15%,flex,center);
             background-color:#4386dd;
-            color:whitesmoke;           
+            color:whitesmoke;  
+            border-radius: 5px;         
         }
     }
   

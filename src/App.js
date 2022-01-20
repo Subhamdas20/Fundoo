@@ -9,8 +9,8 @@ function App() {
     <div>
        {/* <SignUp />  */}
       {/* <Signin/> */}
-      {/* <Forgetemail/> */}
-      <Forgetpassword/>
+      <Forgetemail/>
+      {/* <Forgetpassword/> */}
       
     
     </div>

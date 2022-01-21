@@ -9,9 +9,9 @@
     color: $colour;
     font-size: $size
 }
-@media screen and(min-width:600px) {
+// @media screen and(min-width:431px) {
 
-  .container-app{
+  .container-ap{
     @include flex-item(flex,row,center,center);
     width: 100%;
     height: 100vh;
@@ -20,7 +20,7 @@
     border-radius: 8px;
     border: 1px solid #dadce0;
       width :28%;
-      height: 70vh;
+      height: 100%;
       padding-left: 3%;
       padding-right: 1%;
   
@@ -69,7 +69,6 @@
                 width: 40%;
               }
               .button-next{
-                // @include flex-item(flex,row,center,center);
                 width: 40%;
                 padding-left: 50%;
               }
@@ -79,75 +78,82 @@
       }
   }
   
-}
+// }
 
 
 
-@media screen and (max-width:670px) {
-  .container-app{
-    @include flex-item(flex,row,center,center);
-    width: 100%;
-    height: 100vh;
+// @media screen and (max-width:430px) {
+//   .container-ap{
+//     @include flex-item(flex,row,center,center);
+//     width: 100%;
+//     height: 100vh;
   
+//   .main-body{
+//       width :100%;
+//       height: 100%;
+//       padding-left: 3%;
+//       padding-right: 1%;
+  
+//       .fundoo-head{
+//            @include flex-item(flex,row,center,center);
+//             margin-top: 5%
+//       }
+//       .sign-in{
+//         @include flex-item(flex,row,center,center);
+//             width: 100%;
+//               color: black;
+//               font-weight: 400;
+//               font-size: 24px;
+//               margin-bottom: 14px;
+//         }
+//         .fundoo{
+//           // @include flex-item(flex,row,center,center);
+//              margin-bottom: 36px;
+//             }
+  
+//         .forgot{
+//            @include font-color(#1A73E8, 14px);
+//            margin-bottom: 24px;
+//            font-weight: 600;
+//           }
+//         .email{
+//           margin-bottom: 14px;
+//         }
+//         .form-container{
+//          width: 100%;
+//           .text{
+//             font-size: 14px;
+//           .learn-more{
+//               @include font-color(#1A73E8, 14px);
+//               margin-bottom: 24px
+//             }
+//         }
+  
+//         .create{
+//               @include flex-item(flex,row,center,center);
+//               margin-bottom: 24px;
+//               width: 100%;
+//               justify-content: space-between;
+//               .create-account{
+//                 @include font-color(#1A73E8, 14px);
+//                 font-weight: 600;
+//                 width: 40%;
+//               }
+//               .button-next{
+//                 // @include flex-item(flex,row,center,center);
+//                 width: 40%;
+//                 padding-left: 50%;
+//               }
+//             }
+//         }
+       
+//       }
+//   }
+  
+// }
+@media screen and (max-width:430px) {
   .main-body{
-      width :100%;
-      height: 100%;
-      padding-left: 3%;
-      padding-right: 1%;
-  
-      .fundoo-head{
-           @include flex-item(flex,row,center,center);
-            margin-top: 5%
-      }
-      .sign-in{
-        @include flex-item(flex,row,center,center);
-            width: 100%;
-              color: black;
-              font-weight: 400;
-              font-size: 24px;
-              margin-bottom: 14px;
-        }
-        .fundoo{
-          // @include flex-item(flex,row,center,center);
-             margin-bottom: 36px;
-            }
-  
-        .forgot{
-           @include font-color(#1A73E8, 14px);
-           margin-bottom: 24px;
-           font-weight: 600;
-          }
-        .email{
-          margin-bottom: 14px;
-        }
-        .form-container{
-         width: 100%;
-          .text{
-            font-size: 14px;
-          .learn-more{
-              @include font-color(#1A73E8, 14px);
-              margin-bottom: 24px
-            }
-        }
-  
-        .create{
-              @include flex-item(flex,row,center,center);
-              width: 100%;
-              justify-content: space-between;
-              .create-account{
-                @include font-color(#1A73E8, 14px);
-                font-weight: 600;
-                width: 40%;
-              }
-              .button-next{
-                // @include flex-item(flex,row,center,center);
-                width: 40%;
-                padding-left: 50%;
-              }
-            }
-        }
-       
-      }
+    border-width: 0px;
   }
-  
 }
+

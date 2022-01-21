@@ -4,6 +4,35 @@ import './forgetpassword.scss'
 import Button from '@mui/material/Button';
 
 function Forgetpassword() {
+  const[fields,setFields]=useState({
+    password: '',
+    confirmpassword:'',
+    passwordError:false,
+    confirmpasswordError: false
+    })
+
+ const changeField=(e)=>{
+    setFields(previousvalues =>{
+        return{...previousvalues, [e.target.name]:e.target.value}
+    })
+    console.log(fields);
+}
+
+const validation=()=>{
+    let isError=false;
+    let passError = fields.password ==='' ? true: false;
+    let confirmpassError = fields.confirmpassword ==='' ? true : false;
+    
+    setFields((previousvalues)=>{
+        return {...previousvalues,passwordError:passError,confirmpasswordError:confirmpassError }
+    })
+    console.log(fields.usernameError, userError);
+    return isError =  fields.usernameError || fields.passwordError
+}
+
+const next=()=>{
+    let isValidated = validation();
+}
   return <div className='container-page'>
     <div className='main'>
       <div> <h3 className='fun' >

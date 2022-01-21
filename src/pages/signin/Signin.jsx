@@ -1,16 +1,44 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './signin.scss'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
 function Signin() {
+    const[fields,setFields]=useState({
+    username: '',
+    password:'',
+    usernameError:false,
+    passwordError: false
+    })
+
+ const changeField=(e)=>{
+    setFields(previousvalues =>{
+        return{...previousvalues, [e.target.name]:e.target.value}
+    })
+    console.log(fields);
+}
+
+const validation=()=>{
+    let isError=false;
+    let userError = fields.username ==='' ? true: false;
+    let passError = fields.password ==='' ? true : false;
+    
+    setFields((previousvalues)=>{
+        return {...previousvalues,usernameError:userError,passwordError:passError   }
+    })
+    return isError =  fields.usernameError || fields.passwordError
+}
+
+const next=()=>{
+    let isValidated = validation();
+}
 
     return (
-        <div className='container-app'>
+        <div className='container-ap'>
             <div className='main-body'>
                 <div className='fundoo-head'>
                     <h3 className='g1' >
-                    <font color='#4285f4' > F </font>
+                            <font color='#4285f4' > F </font>
                             <font color="#ea4335" > U </font>
                             <font color="#fbbc05" > N </font>
                             <font color="#4285f4" > D </font>
@@ -23,27 +51,36 @@ function Signin() {
                 <form action="" className='form-container'>
                 <div>
                     <TextField id="outlined-basic"
+                        name='username'
                         label="Email"
                         variant="outlined"
                         size='medium'
                         className='email'
                         autoFocus='true'
+                        helperText= {fields.usernameError ?"Username is required" :  " You can use letters,numbers & periods" }
+
+                        error={fields.usernameError}
+                        onChange={(e)=>{changeField(e)}}
                     />
                 </div>
                 <div>
                     <TextField id="outlined-basic"
+                        name='password'
                         label="password"
                         variant="outlined"
                         size='medium'
                         className='email'
                         type='password'
+                        helperText= {fields.passwordError ?"Password is required" :  " " }
+                        error={fields.passwordError}
+                        onChange={(e)=>{changeField(e)}}
                     />
                 </div>
                 <div className='forgot'>Forgot email?</div>
                 <div className='text'>Not your computer? Use Guest mode to sign in privately. <br /> <div className='learn-more'>Learn more</div> </div>
                 <div className='create'>
                     <div className='create-account'>Create account</div>
-                    <div className='button-next'><Button variant="contained" size='small'>Next</Button></div>
+                    <div className='button-next' onClick={next}><Button variant="contained" size='small'>Next</Button></div>
                     
                 </div>
 

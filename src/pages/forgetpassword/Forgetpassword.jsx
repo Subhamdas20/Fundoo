@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react'
 import TextField from '@mui/material/TextField';
 import './forgetpassword.scss'
 import Button from '@mui/material/Button';
@@ -15,7 +15,7 @@ function Forgetpassword() {
     setFields(previousvalues =>{
         return{...previousvalues, [e.target.name]:e.target.value}
     })
-    console.log(fields);
+    
 }
 
 const validation=()=>{
@@ -26,8 +26,8 @@ const validation=()=>{
     setFields((previousvalues)=>{
         return {...previousvalues,passwordError:passError,confirmpasswordError:confirmpassError }
     })
-    console.log(fields.usernameError, userError);
-    return isError =  fields.usernameError || fields.passwordError
+  
+    return isError =  fields.passwordError || fields.confirmpasswordError
 }
 
 const next=()=>{
@@ -47,21 +47,30 @@ const next=()=>{
       <div className='findemail'>Reset Your password</div>
       <div className='recover'>Enter your password</div>
       <div><TextField id="outlined-password-input"
+      name='password'
         type="password"
         label="password"
         variant="outlined"
         size='small'
         autoFocus='true'
-        className='password-field' />
+        className='password-field'
+        helperText= {fields.passwordError ?"Password is required" :  " " }
+        error={fields.passwordError}
+        onChange={(e)=>{changeField(e)}} />
       </div>
       <div><TextField id="outlined-password-input"
+      name='confirmpassword'
         type="password"
         label="confirm password"
         variant="outlined"
         size='small'
-        className='password-field' />
+        className='password-field' 
+        helperText= {fields.confirmpasswordError ?"Confirm password is required" :  " " }
+        error={fields.confirmpasswordError}
+        onChange={(e)=>{changeField(e)}}
+        />
       </div>
-      <div className='next-button'><Button variant="contained" size='small'>Next</Button></div>
+      <div className='next-button' onClick={next}><Button variant="contained" size='small'>Next</Button></div>
     </div></div>
 
 }

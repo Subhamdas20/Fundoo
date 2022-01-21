@@ -1,8 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react'
 import TextField from '@mui/material/TextField';
 import './forgetemail.scss'
 import Button from '@mui/material/Button';
 function Forgetemail() {
+
+  const[fields,setFields]=useState({
+    username: '',
+    usernameError:false,
+    })
+
+ const changeField=(e)=>{
+    setFields(previousvalues =>{
+        return{...previousvalues, [e.target.name]:e.target.value}
+    })
+ 
+}
+
+const validation=()=>{
+    let isError=false;
+    let userError = fields.username ==='' ? true: false;
+    setFields((previousvalues)=>{
+        return {...previousvalues,usernameError:userError }
+    })
+    return isError =  fields.usernameError
+}
+
+const next=()=>{
+    let isValidated = validation();
+}
+
+
     return <div className='container-page'>
     <div className='main'>
       <div> <h3 className='fun' >
@@ -17,14 +44,18 @@ function Forgetemail() {
       <div className='findemail'>Find your email</div>
       <div className='recover'>Recover your  email</div>
       <div><TextField id="outlined-password-input"
+        name='username'
         type="text"
         label="email"
         variant="outlined"
         size='small'
         autoFocus='true'
-        className='password-field' />
+        className='password-field'
+        helperText= {fields.usernameError ?"Username is required" :  " " }
+        error={fields.usernameError}
+        onChange={(e)=>{changeField(e)}} />
       </div>
-      <div className='next-button'><Button variant="contained" size='small'>Next</Button></div>
+      <div className='next-button' onClick={next}><Button variant="contained" size='small'>Next</Button></div>
     </div></div>
 }
 

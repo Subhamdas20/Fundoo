@@ -6,12 +6,12 @@ function Forgetemail() {
     return <div className='container-page'>
     <div className='main'>
       <div> <h3 className='fun' >
-        <font color="#0A5BB4" > F </font>
-        <font color="#C11D38" > U </font>
-        <font color="#EDF750" > N </font>
-        <font color="#0A5BB4" > D </font>
-        <font color="#71EFA3" > O </font>
-        <font color="#8D1F38" > O  </font>
+      <font color='#4285f4' > F </font>
+      <font color="#ea4335" > U </font>
+      <font color="#fbbc05" > N </font>
+      <font color="#4285f4" > D </font>
+      <font color="#34a853" > O </font>
+      <font color="#ea4335" > O  </font>
       </h3>
       </div>
       <div className='findemail'>Find your email</div>

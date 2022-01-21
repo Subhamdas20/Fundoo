@@ -4,50 +4,118 @@ import TextField from '@mui/material/TextField';
 import logo from '../../images/logo.png'
 import Button from '@mui/material/Button';
 export class SignUp extends Component {
+    constructor(props) {
+      super(props)
+      this.state = {
+        firstname: '',
+        lastname: '',
+        username: '',
+        password:'',
+        firstnameError: false,
+        lastnameError: false,
+        usernameError:false,
+        passwordError:false
+      }
+    }
+    
+    changeField = (e) =>{
+           this.setState({
+             [e.target.name]: e.target.value
+           })
+      }
+
+    validation=()=>{
+        let isError = false;
+        const error = this.state;
+        error.firstnameError = this.state.firstname ==='' ? true: false;
+        error.lastnameError = this.state.lastname ==='' ? true : false;
+        error.usernameError = this.state.username ==='' ? true: false;
+        error.passwordError = this.state.password ==='' ? true : false;
+        this.setState({
+          ...error
+        })
+    
+        return isError = error.firstnameError || error.lastnameError || error.usernameError || error.passwordError
+    }
+
+    next=()=>{
+
+    let isValidated = this.validation();
+       
+    }
+
 
     render() {
         return (
-
             <div className='app-container' >
                 <div className='border'>
                     <div className='content' >
                         <h2 className='g1' >
-                            <font color="#0A5BB4" > F </font>
-                            <font color="#C11D38" > U </font>
-                            <font color="#EDF750" > N </font>
-                            <font color="#0A5BB4" > D </font>
-                            <font color="#71EFA3" > O </font>
-                            <font color="#8D1F38" > O  </font>
+                            <font color='#4285f4' > F </font>
+                            <font color="#ea4335" > U </font>
+                            <font color="#fbbc05" > N </font>
+                            <font color="#4285f4" > D </font>
+                            <font color="#34a853" > O </font>
+                            <font color="#ea4335" > O  </font>
                         </h2>
 
                         <h2 className='h1' > Create your Fundoo Account </h2>
                         <form action="" className='form'>
                             <div className='first-last' >
-                                <div className='firstn' > <TextField id="outlined-basic" label="First Name" variant="outlined" size='small' className='fn' />
+                                <div className='firstn' > <TextField name="firstname"
+                                id="outlined-basic"
+                                 label="First Name"
+                                 variant="outlined" 
+                                 size='small' 
+                                 className='fn' 
+                                 error = {this.state.firstnameError}
+                                 helperText= {this.state.firstnameError ?"Firstname is required" :  " " }
+                                 onChange={(e)=>this.changeField(e)} />
                                 </div>
-                                <div className='lastn' > <TextField id="outlined-basic" label="Last Name" variant="outlined" size='small' className='ln' />
+                                <div className='lastn' > <TextField name="lastname" 
+                                id="outlined-basic" 
+                                label="Last Name" 
+                                variant="outlined" 
+                                size='small' 
+                                className='ln'
+                                helperText= {this.state.firstnameError ?"Lastname is required" :  " " }
+                                error = {this.state.lastnameError}
+                                onChange={(e)=>this.changeField(e)}
+                                 />
                                 </div>
                             </div>
-                            <div className='emaild' > <TextField id="outlined-basic"
+                            <div className='emaild' > <TextField name="username" 
+                                id="outlined-basic"
                                 label="Username"
                                 variant="outlined"
                                 size='small'
                                 className='email'
-                                helperText="You can use letters,numbers & periods" /> </div>
+                                error = {this.state.usernameError}
+                                helperText= {this.state.usernameError ?"Username is required" :  " You can use letters,numbers & periods" }
+                                onChange={(e)=>this.changeField(e)} /> </div>
                             <div className='email-option' > Use my currrent email address instead </div>
                             <div className='confirm-pass' >
-                                <div className='password' > <TextField id="outlined-basic"
+                                <div className='password' > <TextField name="password"
+                                    type='password'
+                                    id="outlined-basic"
                                     label="Password"
                                     variant="outlined"
                                     size='small'
-                                    className='pass' />
+                                    className='pass' 
+                                    helperText= {this.state.passwordError ?"Password is required" :  " " }
+                                    error = {this.state.passwordError}
+                                    onChange={(e)=>this.changeField(e)}
+                                    />
                                 </div>
                                 <div className='passwordc' >
-                                    <TextField id="outlined-basic"
+                                    <TextField 
+                                        type='password'
+                                        id="outlined-basic"
                                         label="confirm Password"
                                         variant="outlined"
                                         size='small'
                                         className='passc'
+                                        onChange={(e)=>this.changeField(e)}
                                     />
                                 </div>
 
@@ -59,7 +127,7 @@ export class SignUp extends Component {
                             </div>
                             <div className='button'>
                                 <div className='signin'>Sign in instead</div>
-                                <Button variant="contained">Next</Button>
+                                <Button onClick={this.next} variant="contained">Next</Button>
                             </div>
                         </form>
                     </div>

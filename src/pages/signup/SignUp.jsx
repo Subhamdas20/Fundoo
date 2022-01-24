@@ -1,47 +1,65 @@
 import React, { Component } from 'react'
 import "./signup.scss"
 import TextField from '@mui/material/TextField';
-import logo from '../../images/logo.png'
+// import logo from '../../images/logo.png'
 import Button from '@mui/material/Button';
+// import axios from 'axios'
+import UserService from '../../services/UserService';
+
+
+
 export class SignUp extends Component {
     constructor(props) {
-      super(props)
-      this.state = {
-        firstname: '',
-        lastname: '',
-        username: '',
-        password:'',
-        firstnameError: false,
-        lastnameError: false,
-        usernameError:false,
-        passwordError:false
-      }
+        super(props)
+        this.state = {
+            firstname: '',
+            lastname: '',
+            username: '',
+            password: '',
+            firstnameError: false,
+            lastnameError: false,
+            usernameError: false,
+            passwordError: false
+        }
     }
-    
-    changeField = (e) =>{
-           this.setState({
-             [e.target.name]: e.target.value
-           })
-      }
 
-    validation=()=>{
+    changeField = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    validation = () => {
         let isError = false;
         const error = this.state;
-        error.firstnameError = this.state.firstname ==='' ? true: false;
-        error.lastnameError = this.state.lastname ==='' ? true : false;
-        error.usernameError = this.state.username ==='' ? true: false;
-        error.passwordError = this.state.password ==='' ? true : false;
+        error.firstnameError = this.state.firstname === '' ? true : false;
+        error.lastnameError = this.state.lastname === '' ? true : false;
+        error.usernameError = this.state.username === '' ? true : false;
+        error.passwordError = this.state.password === '' ? true : false;
         this.setState({
-          ...error
+            ...error
         })
-    
+
         return isError = error.firstnameError || error.lastnameError || error.usernameError || error.passwordError
     }
 
-    next=()=>{
+    next = () => {
+        let isValidated = this.validation();
+        if (isValidated) {
+            let data = {
+                "firstName": "subham",
+                "lastName": "das",
+                "email": "pdrkulgmail.com",
+                "password": " sRGVw",
+                "service": "advance"
+            }
+            UserService.signup(data).then((res)=>{
+                console.log('success');
+            }).catch((res)=>{
+                console.log('error');
+            })
+        }
 
-    let isValidated = this.validation();
-       
     }
 
     render() {
@@ -62,36 +80,37 @@ export class SignUp extends Component {
                         <form action="" className='form'>
                             <div className='first-last' >
                                 <div className='firstn' > <TextField name="firstname"
-                                id="outlined-basic"
-                                 label="First Name"
-                                 variant="outlined" 
-                                 size='small' 
-                                 className='fn' 
-                                 error = {this.state.firstnameError}
-                                 helperText= {this.state.firstnameError ?"Firstname is required" :  " " }
-                                 onChange={(e)=>this.changeField(e)} />
+                                    id="outlined-basic"
+                                    label="First Name"
+                                    variant="outlined"
+                                    size='small'
+                                    className='fn'
+                                    autoFocus='true'
+                                    error={this.state.firstnameError}
+                                    helperText={this.state.firstnameError ? "Firstname is required" : " "}
+                                    onChange={(e) => this.changeField(e)} />
                                 </div>
-                                <div className='lastn' > <TextField name="lastname" 
-                                id="outlined-basic" 
-                                label="Last Name" 
-                                variant="outlined" 
-                                size='small' 
-                                className='ln'
-                                helperText= {this.state.firstnameError ?"Lastname is required" :  " " }
-                                error = {this.state.lastnameError}
-                                onChange={(e)=>this.changeField(e)}
-                                 />
+                                <div className='lastn' > <TextField name="lastname"
+                                    id="outlined-basic"
+                                    label="Last Name"
+                                    variant="outlined"
+                                    size='small'
+                                    className='ln'
+                                    helperText={this.state.firstnameError ? "Lastname is required" : " "}
+                                    error={this.state.lastnameError}
+                                    onChange={(e) => this.changeField(e)}
+                                />
                                 </div>
                             </div>
-                            <div className='emaild' > <TextField name="username" 
+                            <div className='emaild' > <TextField name="username"
                                 id="outlined-basic"
                                 label="Username"
                                 variant="outlined"
                                 size='small'
                                 className='email'
-                                error = {this.state.usernameError}
-                                helperText= {this.state.usernameError ?"Username is required" :  " You can use letters,numbers & periods" }
-                                onChange={(e)=>this.changeField(e)} /> </div>
+                                error={this.state.usernameError}
+                                helperText={this.state.usernameError ? "Username is required" : " You can use letters,numbers & periods"}
+                                onChange={(e) => this.changeField(e)} /> </div>
                             <div className='email-option' > Use my currrent email address instead </div>
                             <div className='confirm-pass' >
                                 <div className='password' > <TextField name="password"
@@ -100,21 +119,21 @@ export class SignUp extends Component {
                                     label="Password"
                                     variant="outlined"
                                     size='small'
-                                    className='pass' 
-                                    helperText= {this.state.passwordError ?"Password is required" :  " " }
-                                    error = {this.state.passwordError}
-                                    onChange={(e)=>this.changeField(e)}
-                                    />
+                                    className='pass'
+                                    helperText={this.state.passwordError ? "Password is required" : " "}
+                                    error={this.state.passwordError}
+                                    onChange={(e) => this.changeField(e)}
+                                />
                                 </div>
                                 <div className='passwordc' >
-                                    <TextField 
+                                    <TextField
                                         type='password'
                                         id="outlined-basic"
                                         label="confirm Password"
                                         variant="outlined"
                                         size='small'
                                         className='passc'
-                                        onChange={(e)=>this.changeField(e)}
+                                        onChange={(e) => this.changeField(e)}
                                     />
                                 </div>
 

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import TextField from '@mui/material/TextField';
 import './forgetpassword.scss'
 import Button from '@mui/material/Button';
+import UserService from '../../services/UserService';
 
 function Forgetpassword() {
   const[fields,setFields]=useState({
@@ -32,6 +33,17 @@ const validation=()=>{
 
 const next=()=>{
     let isValidated = validation();
+    if (isValidated) {
+      let data = {
+      
+          "password": " sRGVw",
+      }
+      UserService.Forgetpassword(data).then((res) => {
+          console.log('success');
+      }).catch((res) => {
+          console.log('error');
+      })
+  }
 }
   return <div className='container-page'>
     <div className='main'>

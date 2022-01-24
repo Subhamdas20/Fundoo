@@ -30,13 +30,11 @@ function Forgetemail() {
     let isValidated = validation();
     if (isValidated) {
       let data = {
-          "firstName": "subham",
-          "lastName": "das",
+        
           "email": "pdrkulgmail.com",
-          "password": " sRGVw",
-          "service": "advance"
+          
       }
-      UserService.signup(data).then((res)=>{
+      UserService.forgetemail(data).then((res)=>{
           console.log('success');
       }).catch((res)=>{
           console.log('error');

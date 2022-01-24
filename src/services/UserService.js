@@ -11,7 +11,10 @@ const UserService = {
     },
     forgetpassword: (data) => {
         return AxiosService.postService(`${url}/users/userSignUp`, data)
-    }
+    },
+    forgetemail: (data) => {
+        return AxiosService.postService(`${url}/users/userSignUp`, data)
+    },
 }
 
 export default UserService;

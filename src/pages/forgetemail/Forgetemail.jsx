@@ -28,17 +28,15 @@ function Forgetemail() {
 
   const next = () => {
     let isValidated = validation();
-    if (isValidated) {
+    if (!isValidated) {
       let data = {
-        
-          "email": "pdrkulgmail.com",
-          
+          "email": "pdrkulgmail.com",   
       }
-      UserService.forgetemail(data).then((res)=>{
-          console.log('success');
-      }).catch((res)=>{
-          console.log('error');
-      })
+      // UserService.forgetemail(data).then((res)=>{
+      //     console.log('success');
+      // }).catch((res)=>{
+      //     console.log('error');
+      // })
   }
   }
 

@@ -2,9 +2,12 @@ import React, { useState } from 'react'
 import './signin.scss'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import UserService
- from '../../services/UserService';
+import UserService from '../../services/UserService';
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 function Signin() {
+    const navigate = useNavigate();
     const [fields, setFields] = useState({
         username: '',
         password: '',
@@ -31,23 +34,31 @@ function Signin() {
     }
 
     const next = () => {
+
         let isValidated = validation();
-        if (isValidated) {
+        if (!isValidated) {
             let data = {
-                "email": "pdrkulgmail.com",
-                "password": " sRGVw",
+                "email": fields.username,
+                "password": fields.password,
             }
+
             UserService.signin(data).then((res) => {
-                console.log('success');
+
+                navigate('/dashboard')
+                console.log('success',res.data.data.userId);
+                localStorage.setItem("token", res.data.data.token)
+                localStorage.setItem("id",res.data.data.userId)
             }).catch((res) => {
                 console.log('error');
             })
+
         }
+
     }
 
     return (
         <div className='container-ap'>
-            <div className='main-body'>
+            <div className='main-display'>
                 <div className='fundoo-head'>
                     <h3 className='g1' >
                         <font color='#4285f4' > F </font>
@@ -88,7 +99,10 @@ function Signin() {
                             onChange={(e) => { changeField(e) }}
                         />
                     </div>
-                    <div className='forgot'>Forgot email?</div>
+                    <Link to="/forgetemail">
+                        <div className='forgot'>Forgot email?</div>
+                    </Link>
+
                     <div className='text'>Not your computer? Use Guest mode to sign in privately. <br /> <div className='learn-more'>Learn more</div> </div>
                     <div className='create'>
                         <div className='create-account'>Create account</div>

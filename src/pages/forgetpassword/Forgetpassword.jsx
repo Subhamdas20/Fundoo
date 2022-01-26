@@ -33,10 +33,10 @@ const validation=()=>{
 
 const next=()=>{
     let isValidated = validation();
-    if (isValidated) {
+    if (!isValidated) {
       let data = {
       
-          "password": " sRGVw",
+          "password": fields.password,
       }
       UserService.Forgetpassword(data).then((res) => {
           console.log('success');

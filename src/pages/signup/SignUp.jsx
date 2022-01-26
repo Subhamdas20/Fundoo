@@ -1,25 +1,27 @@
 import React, { Component } from 'react'
 import "./signup.scss"
 import TextField from '@mui/material/TextField';
-// import logo from '../../images/logo.png'
 import Button from '@mui/material/Button';
-// import axios from 'axios'
 import UserService from '../../services/UserService';
-
-
+import { useNavigate } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 export class SignUp extends Component {
+    
     constructor(props) {
         super(props)
         this.state = {
             firstname: '',
             lastname: '',
             username: '',
+
             password: '',
+            confirmpassword:'',
             firstnameError: false,
             lastnameError: false,
             usernameError: false,
-            passwordError: false
+            passwordError: false,
+            confirmpasserror:false,
         }
     }
 
@@ -44,21 +46,33 @@ export class SignUp extends Component {
     }
 
     next = () => {
+        // const navigate=useNavigate();
         let isValidated = this.validation();
-        if (isValidated) {
+        if (!isValidated) {
             let data = {
-                "firstName": "subham",
-                "lastName": "das",
-                "email": "pdrkulgmail.com",
-                "password": " sRGVw",
-                "service": "advance"
+                "firstname": this.state.firstname,
+                "lastname": this.state.lastname,
+                "email": this.state.username,
+                "password": this.state.password,
             }
-            UserService.signup(data).then((res)=>{
-                console.log('success');
-            }).catch((res)=>{
-                console.log('error');
-            })
+            if(this.state.password===this.state.confirmpassword){
+                UserService.signup(data).then((res)=>{
+                    // navigate('/signin')
+                    // this.props.navigation.navigate('/signin')
+                    console.log(res);
+
+                }).catch((res)=>{
+                   
+                    console.log("error check",res);
+                })
+            }
+            else{
+                this.setState({confirmpasserror:true})
+            }
+            
         }
+
+      
 
     }
 
@@ -126,13 +140,14 @@ export class SignUp extends Component {
                                 />
                                 </div>
                                 <div className='passwordc' >
-                                    <TextField
+                                    <TextField name="confirmpassword"
                                         type='password'
                                         id="outlined-basic"
                                         label="confirm Password"
                                         variant="outlined"
                                         size='small'
                                         className='passc'
+                                        helperText={this.state.confirmpasserror ? "Confirm password not matching" : ""}
                                         onChange={(e) => this.changeField(e)}
                                     />
                                 </div>
@@ -144,7 +159,10 @@ export class SignUp extends Component {
                                 <div className='show'> Show password </div>
                             </div>
                             <div className='button'>
+                                <Link to="/signin">
                                 <div className='signin'>Sign in instead</div>
+                                </Link>
+                                
                                 <Button onClick={this.next} variant="contained">Next</Button>
                             </div>
                         </form>

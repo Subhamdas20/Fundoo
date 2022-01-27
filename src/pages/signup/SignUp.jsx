@@ -3,7 +3,6 @@ import "./signup.scss"
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import UserService from '../../services/UserService';
-import { useNavigate } from "react-router-dom";
 import {Link} from "react-router-dom";
 
 export class SignUp extends Component {

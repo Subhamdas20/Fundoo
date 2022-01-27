@@ -8,7 +8,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import MiniDrawer from './pages/notes/Dashboard';
+import MiniDrawer from './pages/display/Dashboard';
 
 
 

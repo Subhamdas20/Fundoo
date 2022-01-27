@@ -10,25 +10,23 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+
 
 import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
 import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
 import ArchiveOutlinedIcon from '@mui/icons-material/ArchiveOutlined';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
-import Icons from '../../components/icons/Icons';
+
 import { useNavigate } from "react-router-dom";
-import Displaynote from '../../components/displaynote/Displaynote';
-import Takenote from '../../components/takenote/Takenote';
+
 
 import './dashboard.scss'
+import Notes from '../notes/Notes';
 
 const drawerWidth = 240;
 
@@ -96,7 +94,6 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     }),
   }),
 );
-
 
 
 export default function MiniDrawer() {
@@ -179,13 +176,18 @@ export default function MiniDrawer() {
 
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }} className='styles'>
-        <Typography  >
-          <DrawerHeader />
-          <Takenote />
-          <Displaynote />
+        <DrawerHeader />
+        <Typography className='content-note' >
+
+        
+          <Notes/>
         </Typography>
+        
+
+
 
       </Box>
+
     </Box>
   );
 }

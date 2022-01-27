@@ -15,7 +15,7 @@ const UserService = {
         return AxiosService.postService(`${url}/users/userSignUp`, data)
     },
     forgetemail: (data) => {
-        return AxiosService.postService(`${url}/users/forgetpassword`, data)
+        return AxiosService.postService(`${url}/users/`, data)
     },
     testapi:(data)=>{
         return axios.post(`${url}/users/testapi`)

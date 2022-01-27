@@ -34,18 +34,14 @@ function Signin() {
     }
 
     const next = () => {
-
         let isValidated = validation();
         if (!isValidated) {
             let data = {
                 "email": fields.username,
                 "password": fields.password,
             }
-
             UserService.signin(data).then((res) => {
-
                 navigate('/dashboard')
-                console.log('success',res.data.data.userId);
                 localStorage.setItem("token", res.data.data.token)
                 localStorage.setItem("id",res.data.data.userId)
             }).catch((res) => {
@@ -81,7 +77,6 @@ function Signin() {
                             className='email'
                             autoFocus='true'
                             helperText={fields.usernameError ? "Username is required" : " You can use letters,numbers & periods"}
-
                             error={fields.usernameError}
                             onChange={(e) => { changeField(e) }}
                         />
@@ -107,11 +102,8 @@ function Signin() {
                     <div className='create'>
                         <div className='create-account'>Create account</div>
                         <div className='button-next' onClick={next}><Button variant="contained" size='small'>Next</Button></div>
-
                     </div>
-
                 </form>
-
             </div>
         </div>
 

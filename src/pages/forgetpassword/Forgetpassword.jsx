@@ -38,7 +38,7 @@ const next=()=>{
       
           "password": fields.password,
       }
-      UserService.Forgetpassword(data).then((res) => {
+      UserService.forgetpassword(data).then((res) => {
           console.log('success');
       }).catch((res) => {
           console.log('error');

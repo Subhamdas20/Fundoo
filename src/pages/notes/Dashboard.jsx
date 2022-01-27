@@ -17,8 +17,19 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+
+import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined';
+import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
+import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
+import ArchiveOutlinedIcon from '@mui/icons-material/ArchiveOutlined';
+import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 import Icons from '../../components/icons/Icons';
 import { useNavigate } from "react-router-dom";
+import Displaynote from '../../components/displaynote/Displaynote';
+import Takenote from '../../components/takenote/Takenote';
+
+import './dashboard.scss'
+
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -86,16 +97,41 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
+
+
 export default function MiniDrawer() {
   const navigate = useNavigate();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
-  React.useEffect(()=>{
-    if(!localStorage.getItem("token")){
+  React.useEffect(() => {
+    if (!localStorage.getItem("token")) {
       navigate('/signin')
     }
-  },[])
+  }, [])
+
+  let list = [
+    {
+      text: "Notes",
+      icons: <LightbulbOutlinedIcon />,
+    },
+    {
+      text: "Reminders",
+      icons: <NotificationsOutlinedIcon />,
+    },
+    {
+      text: "Edit labels",
+      icons: <CreateOutlinedIcon />,
+    },
+    {
+      text: "Archive",
+      icons: <ArchiveOutlinedIcon />,
+    },
+    {
+      text: "Bin",
+      icons: <DeleteForeverOutlinedIcon />
+    }
+  ]
 
   const handleDrawerOpen = () => {
     setOpen(!open);
@@ -115,13 +151,10 @@ export default function MiniDrawer() {
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            // sx={{
-            //   marginRight: '36px',
-            //   ...(open && { display: 'none' }),
-            // }}
           >
             <MenuIcon />
           </IconButton>
+          <img className="keep" src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png" alt="keep logo" />
           <Typography variant="h6" noWrap component="div">
             Fundoo Notes
           </Typography>
@@ -129,36 +162,29 @@ export default function MiniDrawer() {
       </AppBar>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
-          {/* <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-          </IconButton> */}
+
         </DrawerHeader>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
+          {list.map((text, index) => (
+            <ListItem button key={text.text}>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {text.icons}
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={text.text} />
             </ListItem>
           ))}
         </List>
         <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
+
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
-        {/* <Icons/> */}
+      <Box component="main" sx={{ flexGrow: 1, p: 3 }} className='styles'>
+        <Typography  >
+          <DrawerHeader />
+          <Takenote />
+          <Displaynote />
+        </Typography>
+
       </Box>
     </Box>
   );

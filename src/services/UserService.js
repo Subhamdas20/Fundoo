@@ -6,9 +6,7 @@ let url = 'http://localhost:4000';
 
 const UserService = {
     signup: (data) => {
-        let response = AxiosService.postService(`${url}/users/register`, data)
-        console.log(response,"Service check");
-        return response;
+        return AxiosService.postService(`${url}/users/register`, data)
     },
     signin: (data) => {
         return AxiosService.postService(`${url}/users/login`, data)
@@ -17,7 +15,7 @@ const UserService = {
         return AxiosService.postService(`${url}/users/userSignUp`, data)
     },
     forgetemail: (data) => {
-        return AxiosService.postService(`${url}/users/userSignUp`, data)
+        return AxiosService.postService(`${url}/users/forgetpassword`, data)
     },
     testapi:(data)=>{
         return axios.post(`${url}/users/testapi`)

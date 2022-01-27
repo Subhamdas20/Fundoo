@@ -30,13 +30,13 @@ function Forgetemail() {
     let isValidated = validation();
     if (!isValidated) {
       let data = {
-          "email": "pdrkulgmail.com",   
+          "email": fields.username,   
       }
-      // UserService.forgetemail(data).then((res)=>{
-      //     console.log('success');
-      // }).catch((res)=>{
-      //     console.log('error');
-      // })
+      UserService.forgetemail(data).then((res)=>{
+          console.log('success');
+      }).catch((res)=>{
+          console.log('error');
+      })
   }
   }
 

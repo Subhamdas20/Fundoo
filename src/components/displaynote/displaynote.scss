@@ -1,0 +1,26 @@
+.container-displaynote{
+    background-color: #fff;
+    border-color: #e0e0e0;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    width: 240px;
+    height: 122px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-left: 5px;
+    .title{
+        width:40px
+    }
+    .notes{
+        width:100%
+    }
+}
+
+// .container-displaynote :hover{
+//     border: 3px solid #dadce0;
+// }
+// .main-display:hover{
+//     border: 3px solid #dadce0;
+//     border-radius: 8px;
+// }

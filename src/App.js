@@ -11,6 +11,7 @@ import {
 import MiniDrawer from './pages/notes/Dashboard';
 
 
+
 function App() {
   return ( 
       <Router>
@@ -20,6 +21,7 @@ function App() {
           <Route path="/forgetpassword" element={<Forgetpassword/>}/>
           <Route path="/forgetemail" element={ <Forgetemail/>}/>
           <Route path="/dashboard" element={<MiniDrawer/>}/>
+ 
         </Routes>
       </Router>
   );

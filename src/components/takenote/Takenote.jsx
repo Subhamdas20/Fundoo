@@ -22,11 +22,6 @@ function Takenote(props) {
     }
 
 
-    React.useEffect(()=>{
-        props.getnote("");
-    },[])
-
-
     const close = () => {
         let data = {
             "title": field.title,
@@ -34,8 +29,7 @@ function Takenote(props) {
         }
         setTakenote(true)
         NotesService.addnotes(data).then(() => {
-            props.getnote("");
-            // props.getnotes()
+            // props.getnote();
             console.log("sucess", data);
         }).catch((err) => {
             console.log(err,"error");

@@ -7,19 +7,25 @@ import NotesService from '../../services/NotesService';
 
 function Notes() {
     const [notesarray,setNotesarray]=useState([])
-    const getNotes = (data)=>{
-        NotesService.getnotes(data).then((result)=>{
-            setNotesarray(result.data.data);
-            console.log("sucess");
-            console.log(result.data.data);
-        }).catch((err)=>{
 
+       React.useEffect(()=>{
+        getNotes();
+    },[])
+
+    const getNotes = ()=>{
+        NotesService.getnotes().then((result)=>{
+            setNotesarray(result.data.data);
+            
+            console.log("sucess");
+        }).catch((err)=>{
+            console.log("error in getnotes");
         })
     }
 
     return <div>
         <Takenote getnote={getNotes}/>
         <Displaynote notesarray={notesarray}/>
+      
     </div>;
 }
 

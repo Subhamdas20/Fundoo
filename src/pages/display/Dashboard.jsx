@@ -22,6 +22,16 @@ import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
 import ArchiveOutlinedIcon from '@mui/icons-material/ArchiveOutlined';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 
+import SearchIcon from '@mui/icons-material/Search';
+// import SearchOutlinedIcon from '@mui/icons-material/SearchOffOutlined'
+import RefreshOutlinedIcon from '@mui/icons-material/RefreshOutlined'
+import ViewAgendaOutlinedIcon from '@mui/icons-material/ViewAgendaOutlined';
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import AppsOutlinedIcon from '@mui/icons-material/AppsOutlined';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
+
+import Popover from '@mui/material/Popover';
 import { useNavigate } from "react-router-dom";
 
 
@@ -64,6 +74,10 @@ const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme, open }) => ({
   zIndex: theme.zIndex.drawer + 1,
+  backgroundColor: "white",
+  boxShadow: "0px",
+  border: "1px solid lightgray",
+  color: "black",
   transition: theme.transitions.create(['width', 'margin'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
@@ -106,6 +120,22 @@ export default function MiniDrawer() {
       navigate('/signin')
     }
   }, [])
+
+
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const opens = Boolean(anchorEl);
+  const id = opens ? 'simple-popover' : undefined;
+
+
 
   let list = [
     {
@@ -155,6 +185,49 @@ export default function MiniDrawer() {
           <Typography variant="h6" noWrap component="div">
             Fundoo Notes
           </Typography>
+          <div className='search'>
+            <IconButton> <SearchIcon /> </IconButton>
+            <input className='search-input' type="text" placeholder='Search' ></input>
+
+          </div>
+          <div className='hearder'>
+            <ul className="header-icons">
+              <IconButton> <RefreshOutlinedIcon /> </IconButton>
+              <IconButton> <ViewAgendaOutlinedIcon /> </IconButton>
+
+              <IconButton> <SettingsOutlinedIcon /> </IconButton>
+              <IconButton> <AppsOutlinedIcon /></IconButton>
+              <IconButton> <AccountCircleOutlinedIcon onClick={handleOpen} variant="contained" aria-describedby={id} />
+                <Popover
+                  id={id}
+                  open={opens}
+                  anchorEl={anchorEl}
+                  onClose={handleClose}
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'left',
+                  }}
+                >
+                  <Typography sx={{ p: 2 }}>
+                    <div className='account-details'>
+                      <div className='detail'>
+                      <div className='image-details'></div>
+                     
+                       <h4>Subham Das</h4>
+                      <div>Subham@gmail.com</div>
+                      <div className='manage-account'>Manage your account</div>
+                      </div>
+                      <div className='add-account'>
+                        <div className='add'><PersonAddAltOutlinedIcon/>Add another account</div>
+                      </div>
+                    </div>
+
+                  </Typography>
+                </Popover>
+
+              </IconButton>
+            </ul>
+          </div>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
@@ -175,17 +248,12 @@ export default function MiniDrawer() {
         <Divider />
 
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }} className='styles'>
+      <Box component="main" sx={{ flexGrow: 1, p: 3 }} >
         <DrawerHeader />
         <Typography className='content-note' >
 
-        
-          <Notes/>
+          <Notes />
         </Typography>
-        
-
-
-
       </Box>
 
     </Box>

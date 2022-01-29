@@ -1,26 +1,37 @@
-.container-displaynote{
 
-    background-color: #fff;
-    border-color: #e0e0e0;
-    border: 1px solid #dadce0;
-    border-radius: 8px;
-    width: 240px;
-    height: 122px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding-left: 5px;
-   
-    .title{
-        width:40px;
-        padding-left:10px
+.main-display{
+    width:240px;
+    .container-displaynote{
+        background-color: #fff;
+        border-color: #e0e0e0;
+        border: 1px solid #dadce0;
+        border-radius: 8px;
+        width: 240px;
+        min-height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding-left: 5px;
         
+        .title{
+            width:100%;
+            padding-left:10px;
+            word-wrap: break-word;
+            padding-right: 12px;
+            padding-top: 5px;
+            
+        }
+        .notes{
+            width:100%;
+            padding-left:10px;
+            word-wrap: break-word;
+            padding-right: 12px;
+            padding-bottom: 10px;
+        }
+        margin-top: 25px;
+       
     }
-    .notes{
-        width:100%;
-        padding-left:10px
-    }
-    margin-top: 25px;
-   
+    
+    
 }
 

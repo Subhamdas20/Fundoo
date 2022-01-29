@@ -1,7 +1,62 @@
+
+@mixin color {
+    width: 30px;
+    height: 30px;
+    border-radius: 80%;
+  
+
+}
+
 .icons{
     display: flex;
     justify-content: space-around;
     width:100%
-    
+}
 
+.icon-popover{
+    display:flex;
+    justify-content: space-between;
+    // width:50%;
+
+    .color1{
+        @include color();
+        background-color: #f28b82
+    }
+    .color2{
+        @include color();
+        background-color:#fbbc04
+    }
+    .color3{
+        @include color();
+        background-color:#fff475
+    }
+  
+    .color4{
+        @include color();
+        background-color:#ccff90
+    }
+    .color5{
+        @include color();
+        background-color:#a7ffeb
+    }
+    .color6{
+        @include color();
+        background-color:#cbf0f8
+    }
+    .color7{
+        @include color();
+        background-color:#aecbfa
+    }
+    .color8{
+        @include color();
+        background-color:#d7aefb
+    }
+    .color9{
+        @include color();
+        background-color:#fdcfe8
+    }
+    .color10{
+        @include color();
+        background-color:#e6c9a8
+    }
 }

@@ -8,6 +8,8 @@ import Icons from '../icons/Icons';
 import { Input } from '@mui/material';
 import NotesService from '../../services/NotesService';
 
+import InputBase from '@mui/material/InputBase';
+
 function Takenote(props) {
     const [takenote, setTakenote] = useState(true)
     const [field, setField] = useState({
@@ -29,16 +31,14 @@ function Takenote(props) {
         }
         setTakenote(true)
         NotesService.addnotes(data).then(() => {
-            // props.getnote();
+            props.getnote();
             console.log("sucess", data);
         }).catch((err) => {
             console.log(err,"error");
-
         })
-
     }
 
-    return <div >
+    return <div className='app-barcontent'>
         {takenote ?
             <div className='bar' onClick={() => setTakenote(false)}>
                 <div className='takenote'>Take a note...</div>
@@ -50,12 +50,12 @@ function Takenote(props) {
             </div>
             :
             <div className='bar-input' >
-                <div> <TextareaAutosize name="title" className='text-area' rows="1" cols="50" onChange={(e) => changeField(e)} >
+                <div> <InputBase name="title" placeholder="Title" fullWidth multiline className='text-area' rows="1" cols="50" onChange={(e) => changeField(e)} >
                     Title
-                </TextareaAutosize></div>
-                <div> <textarea name="description" className='text-area' rows="5" cols="50" onChange={(e) => changeField(e)} >
+                </InputBase></div>
+                <div> <InputBase name="description" placeholder="Take a note..." fullWidth multiline  className='text-area' rows="5" cols="50" onChange={(e) => changeField(e)} >
                     Add text
-                </textarea></div>
+                </InputBase></div>
                 <div className='close-button'>
                     <Icons className='icons-set' />
                     <button className='button-icon' onClick={() => close()}>close</button>

@@ -1,3 +1,69 @@
-.content-note{
+.search{
     
+    width: 40%;
+    margin-bottom: 10px;
+    display: flex;
+    background-color: #f1f3f4;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    margin-left: 5%;
+    .search-input{
+        width : 100%;
+        border: none;
+        border-radius: 10px;
+    }
+    
+    
+    .search-input{
+        width: 100%;
+        padding: 10px;
+        background-color: #f1f3f4;  
+        // text-align: center;
+    }
+
+}
+.hearder{
+    margin-left: 20%;
+    .header-icons{
+        display: flex;
+    }
+}
+
+.account-details{
+    width: 354px;
+    height: auto;
+
+    .detail{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .manage-account{
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        height: 30px;
+        border: 1px solid;
+        border-radius: 4px;
+        margin-top: 5%;
+
+    }
+    .image-details{
+        width: 80px;
+        height: 80px;
+        border-radius: 100%;
+        border: 1px solid;
+    }
+    .add-account{
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        .add{
+            width: 60%;
+            display: flex;
+            justify-content: center;
+            border: 1px solid;
+        }
+    }
 }

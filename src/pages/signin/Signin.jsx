@@ -41,11 +41,11 @@ function Signin() {
                 "password": fields.password,
             }
             UserService.signin(data).then((res) => {
-                navigate('/dashboard')
+                
                 localStorage.setItem("token", res.data.data.token)
                 localStorage.setItem("id",res.data.data.userId)
+                navigate('/dashboard')
             }).catch((res) => {
-                console.log('error');
             })
 
         }

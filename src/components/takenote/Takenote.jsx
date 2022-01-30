@@ -23,11 +23,12 @@ function Takenote(props) {
         })
     }
 
-
     const close = () => {
         let data = {
             "title": field.title,
-            "description": field.description
+            "description": field.description,
+            "isArchieved": false,
+            "isDeleted":false,
         }
         setTakenote(true)
         NotesService.addnotes(data).then(() => {
@@ -57,7 +58,7 @@ function Takenote(props) {
                     Add text
                 </InputBase></div>
                 <div className='close-button'>
-                    <Icons className='icons-set' />
+                    <Icons className='icons-set' mode="takenote" />
                     <button className='button-icon' onClick={() => close()}>close</button>
                 </div>
 

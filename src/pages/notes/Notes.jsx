@@ -22,7 +22,7 @@ function Notes() {
 
     return <div >
     <div ><Takenote getnote={getNotes} /></div>
-    <div className='Notes-container'><Displaynote notesarray={notesarray} /></div>
+    <div className='Notes-container'><Displaynote notesarray={notesarray} getnote={getNotes}/></div>
     </div>;
 }
 

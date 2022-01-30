@@ -9,9 +9,11 @@ import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import Typography from '@mui/material/Typography';
 import Popover from '@mui/material/Popover';
 
+import NotesService from '../../services/NotesService';
+
 import './icons.scss'
 import { green } from '@mui/material/colors';
-function Icons() {
+function Icons(props) {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -24,11 +26,25 @@ function Icons() {
   };
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
-
-
-
   const colrs = ["#f28b82", '#fbbc04', '#fff475', '#ccff90', '#a7ffeb', '#cbf0f8', '#aecbfa', '#d7aefb', '#fdcfe8', '#e6c9a8']
 
+const addData=(data)=>{
+  if(props.mode==="takenote"){
+    
+  
+  }
+  else if(props.mode==="display"){
+    let datas={
+      "_id": props.notes._id,
+      "color":data,
+    }
+    NotesService.updatenotes(datas)
+    props.modeone()
+  }
+
+}
+
+  
   return <div className='icons'>
     <icons1><AddAlertOutlinedIcon htmlColor="grey" /></icons1>
     <icons2><PersonAddAlt1OutlinedIcon htmlColor="grey" /></icons2>
@@ -48,7 +64,7 @@ function Icons() {
           <div className='icon-popover'>
             {
               colrs.map((colorcode) => {
-                return <div className='icon-pop' style={{ backgroundColor: colorcode }}></div>
+                return <div className='icon-pop' style={{ backgroundColor: colorcode }} onClick={()=>addData(colorcode)}></div>
               }
               )}
           </div>

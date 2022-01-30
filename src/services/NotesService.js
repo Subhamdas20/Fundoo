@@ -14,7 +14,12 @@ const NotesService = {
     },
     getnotes: (data) => {
         return AxiosService.getService(`${url}/notes/getnotes`,header)
-    }
+    },
+    updatenotes: (data) => {
+        return AxiosService.updateService(`${url}/notes/updatenotes`,data,header)
+    },
+    
+
 }
 
 export default NotesService;

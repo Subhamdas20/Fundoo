@@ -30,18 +30,30 @@ function Icons(props) {
 
 const addData=(data)=>{
   if(props.mode==="takenote"){
-    
-  
+  props.modeone(data)
   }
   else if(props.mode==="display"){
     let datas={
       "_id": props.notes._id,
       "color":data,
     }
-    NotesService.updatenotes(datas)
-    props.modeone()
+    NotesService.updatenotes(datas).then((result) => {
+      // props.getnote()
+      props.modeone()
+  }).catch((err) => {
+  })
+    
   }
 
+}
+
+const addarchieve=()=>{
+  if(props.mode==="takenote"){
+    props.archieveChange()
+    }
+    else if(props.mode==="display"){
+      props.archieveChange()
+    }
 }
 
   
@@ -73,7 +85,7 @@ const addData=(data)=>{
     </icons3>
 
     <icons4><PhotoOutlinedIcon htmlColor="grey" /></icons4>
-    <icons5><ArchiveOutlinedIcon htmlColor="grey" /></icons5>
+    <icons5><ArchiveOutlinedIcon htmlColor="grey" onClick={()=>addarchieve()} /></icons5>
     <icons6><MoreVertOutlinedIcon htmlColor="grey" /></icons6>
 
   </div>;

@@ -33,7 +33,7 @@ import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
 
 import Popover from '@mui/material/Popover';
 import { useNavigate } from "react-router-dom";
-
+import NotesService from '../../services/NotesService';
 
 import './dashboard.scss'
 import Notes from '../notes/Notes';
@@ -114,7 +114,7 @@ export default function MiniDrawer() {
   const navigate = useNavigate();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-
+  const [isArchieved,setisArchieved]=React.useState(false)
   React.useEffect(() => {
     if (!localStorage.getItem("token")) {
       navigate('/signin')
@@ -135,7 +135,11 @@ export default function MiniDrawer() {
   const opens = Boolean(anchorEl);
   const id = opens ? 'simple-popover' : undefined;
 
-
+const getArchieved=()=>{
+  setisArchieved(true)
+  NotesService.getisArchievd()
+  NotesService.getnotes()
+}
 
   let list = [
     {
@@ -152,7 +156,7 @@ export default function MiniDrawer() {
     },
     {
       text: "Archive",
-      icons: <ArchiveOutlinedIcon />,
+      icons: <ArchiveOutlinedIcon onClick={()=>getArchieved()}/>,
     },
     {
       text: "Bin",
@@ -169,6 +173,8 @@ export default function MiniDrawer() {
   };
 
   return (
+
+  //  { isArchieved ?  true : false }`
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
@@ -257,5 +263,6 @@ export default function MiniDrawer() {
       </Box>
 
     </Box>
+
   );
 }

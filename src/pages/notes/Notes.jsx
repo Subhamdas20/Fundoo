@@ -11,7 +11,7 @@ function Notes() {
     const [notesarray, setNotesarray] = useState([])
     React.useEffect(() => {
         getNotes();
-    }, [])
+    },[])
 
     const getNotes = () => {
         NotesService.getnotes().then((result) => {

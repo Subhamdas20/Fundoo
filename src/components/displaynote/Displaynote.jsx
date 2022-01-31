@@ -19,7 +19,15 @@ function Displaynote(props) {
     description: "",
     _id: ""
   })
-  const [notes, setNotes] = useState()
+  const [notes, setNotes] = useState({
+    _id :"",
+    title: "",
+    description: "",
+    isArchieved:"",
+    isDeleted:"",
+    color:"#ffffff"
+
+  })
 
   const changeColor = () => {
     props.getnote()
@@ -60,7 +68,7 @@ function Displaynote(props) {
 
   }
   const handleClose = (id) => {
-    console.log(id, dialognotes._id);
+    console.log(id, dialognotes._id , "inside closeeee");
     setOpen(false);
     let data = {
       // '_id':dialognotes._id,
@@ -102,7 +110,7 @@ function Displaynote(props) {
            return <div className='main-display'  >
               <div className='wrap' >
                 <div className='container-displaynote' style={{ backgroundColor: notes.color }}>
-                  <div onClick={() => handleOpen()}  >
+                  <div onClick={() => handleOpen(notes)}  >
                     <div className='title'>{notes.title}</div>
                     <div className='notes'>{notes.description}</div>
                   </div>
@@ -119,14 +127,14 @@ function Displaynote(props) {
       onClose={() => handleClose(notes._id)
       }
     >
-      <Box sx={{ ...style, width: 500 }}>
+      <Box sx={{ ...style, width: 500 }}  style={{ backgroundColor: notes.color }}>
         <div className='modal-input'>
-          <input name='title' className='title-modal' onChange={(e) => { changeField(e, notes._id) }} defaultValue={dialognotes.title} />
-          <input name='description' className='description-modal' onChange={(e) => { changeField(e, notes._id) }} defaultValue={dialognotes.description} />
+          <input name='title' className='title-modal' onChange={(e) => { changeField(e, notes._id) }} defaultValue={dialognotes.title}  style={{ backgroundColor: notes.color }}/>
+          <input name='description' className='description-modal' onChange={(e) => { changeField(e, notes._id) }} defaultValue={dialognotes.description} style={{ backgroundColor: notes.color }} />
         </div>
 
-        <div className='modal-icons' > <Icons mode="display" isdeleteChange={() => isdeleteChange(notes._id)} archieveChange={() => archieveChange(notes._id)} notes={notes} modeone={changeColor} />
-          <button className='button-icon' onClick={(notes) => handleClose(notes)}>close</button></div>
+        <div className='modal-icons'  > <Icons mode="display" isdeleteChange={() => isdeleteChange(notes._id)} archieveChange={() => archieveChange(notes._id)} notes={notes} modeone={changeColor} />
+          <button className='button-icon'  onClick={() => handleClose(notes)} style={{ backgroundColor: notes.color }}>close</button></div>
       </Box>
     </Modal>
        

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AddAlertOutlinedIcon from '@mui/icons-material/AddAlertOutlined';
 import PersonAddAlt1OutlinedIcon from '@mui/icons-material/PersonAddAlt1Outlined';
 import ColorLensOutlinedIcon from '@mui/icons-material/ColorLensOutlined';
@@ -17,6 +17,9 @@ function Icons(props) {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 
+  // const[isDeleted,setisDelete]=useState(true)
+  
+ 
   const handleOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -24,6 +27,16 @@ function Icons(props) {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  // const handleClose = () => {
+  //   setAnchorEl(null);
+  // };
+
+  // const open = Boolean(anchorEl);
+  // const id = open ? 'simple-popover' : undefined;
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
   const colrs = ["#f28b82", '#fbbc04', '#fff475', '#ccff90', '#a7ffeb', '#cbf0f8', '#aecbfa', '#d7aefb', '#fdcfe8', '#e6c9a8']
@@ -55,12 +68,21 @@ const addarchieve=()=>{
       props.archieveChange()
     }
 }
+const addisdelete=()=>{
+  if(props.mode==="display"){
+    props.isdeleteChange()
+    }
+}
+
+// const setDelete=()=>{
+//   setisDelete(false)
+// }
 
   
   return <div className='icons'>
-    <icons1><AddAlertOutlinedIcon htmlColor="grey" /></icons1>
-    <icons2><PersonAddAlt1OutlinedIcon htmlColor="grey" /></icons2>
-    <icons3  ><ColorLensOutlinedIcon htmlColor="grey" onClick={handleOpen} variant="contained" aria-describedby={id} />
+    <div><AddAlertOutlinedIcon htmlColor="grey" /></div>
+    <div><PersonAddAlt1OutlinedIcon htmlColor="grey" /></div>
+    <div  ><ColorLensOutlinedIcon htmlColor="grey" onClick={handleOpen} variant="contained" aria-describedby={id} />
       <Popover
         id={id}
         open={open}
@@ -74,6 +96,7 @@ const addarchieve=()=>{
 
         <Typography sx={{ p: 1 }}>
           <div className='icon-popover'>
+          
             {
               colrs.map((colorcode) => {
                 return <div className='icon-pop' style={{ backgroundColor: colorcode }} onClick={()=>addData(colorcode)}></div>
@@ -82,12 +105,13 @@ const addarchieve=()=>{
           </div>
         </Typography>
       </Popover>
-    </icons3>
+    </div>
+    <div><PhotoOutlinedIcon htmlColor="grey" /></div>
+    <div><ArchiveOutlinedIcon htmlColor="grey" onClick={()=>addarchieve()} /></div>
+    <div><MoreVertOutlinedIcon htmlColor="grey" onClick={()=>addisdelete()} />
 
-    <icons4><PhotoOutlinedIcon htmlColor="grey" /></icons4>
-    <icons5><ArchiveOutlinedIcon htmlColor="grey" onClick={()=>addarchieve()} /></icons5>
-    <icons6><MoreVertOutlinedIcon htmlColor="grey" /></icons6>
-
+      
+    </div>
   </div>;
 
 

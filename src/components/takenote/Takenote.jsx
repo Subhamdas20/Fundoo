@@ -70,7 +70,7 @@ function Takenote(props) {
                 <div> <InputBase name="title" placeholder="Title" fullWidth multiline className='text-area' rows="1" cols="50" onChange={(e) => changeField(e)} >
                     Title
                 </InputBase></div>
-                <div> <InputBase name="description" placeholder="Take a note..." fullWidth multiline  className='text-area' rows="5" cols="50" onChange={(e) => changeField(e)} >
+                <div> <InputBase name="description" placeholder="Take a note..." fullWidth multiline  className='text-area' rows="3" cols="50" onChange={(e) => changeField(e)} >
                     Add text
                 </InputBase></div>
                 <div className='close-button'>

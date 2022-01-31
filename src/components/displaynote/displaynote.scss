@@ -32,6 +32,35 @@
        
     }
     
-    
 }
 
+.button-icon{
+    background-color: #ffffff;
+    border: none;
+}
+.modal-input{
+    display: flex;
+    flex-direction: column;
+    padding-left: 5%;
+    .title-modal{
+        border: none;
+        outline: none;
+        height: 30px;
+    }
+    .description-modal{
+        border: none;
+        outline: none;
+    }
+    
+}
+.modal-icons{
+    display: flex;
+    margin-top: 5%;
+}
+.displaynote-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.displaynote-container >div{
+    margin:10px
+}

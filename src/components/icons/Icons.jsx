@@ -9,16 +9,15 @@ import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import Typography from '@mui/material/Typography';
 import Popover from '@mui/material/Popover';
 
+
 import NotesService from '../../services/NotesService';
 
 import './icons.scss'
-import { green } from '@mui/material/colors';
+
 function Icons(props) {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
-
-  // const[isDeleted,setisDelete]=useState(true)
-  
+  const [anchor, setAnchor] = React.useState(null);
  
   const handleOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -27,18 +26,19 @@ function Icons(props) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+
+  const handleOpen1 = (event) => {
+    setAnchor(event.currentTarget);
   };
 
-  // const handleClose = () => {
-  //   setAnchorEl(null);
-  // };
+  const handleClose1 = () => {
+    setAnchor(null);
+  };
 
-  // const open = Boolean(anchorEl);
-  // const id = open ? 'simple-popover' : undefined;
   const open = Boolean(anchorEl);
+  const open1 = Boolean(anchor);
   const id = open ? 'simple-popover' : undefined;
+  const id1 = open1 ? 'simple-popover' : "";
   const colrs = ["#f28b82", '#fbbc04', '#fff475', '#ccff90', '#a7ffeb', '#cbf0f8', '#aecbfa', '#d7aefb', '#fdcfe8', '#e6c9a8']
 
 const addData=(data)=>{
@@ -51,11 +51,10 @@ const addData=(data)=>{
       "color":data,
     }
     NotesService.updatenotes(datas).then((result) => {
-      // props.getnote()
+     
       props.modeone()
   }).catch((err) => {
   })
-    
   }
 
 }
@@ -74,11 +73,6 @@ const addisdelete=()=>{
     }
 }
 
-// const setDelete=()=>{
-//   setisDelete(false)
-// }
-
-  
   return <div className='icons'>
     <div><AddAlertOutlinedIcon htmlColor="grey" /></div>
     <div><PersonAddAlt1OutlinedIcon htmlColor="grey" /></div>
@@ -105,12 +99,29 @@ const addisdelete=()=>{
           </div>
         </Typography>
       </Popover>
-    </div>
+    </div>  
     <div><PhotoOutlinedIcon htmlColor="grey" /></div>
     <div><ArchiveOutlinedIcon htmlColor="grey" onClick={()=>addarchieve()} /></div>
-    <div><MoreVertOutlinedIcon htmlColor="grey" onClick={()=>addisdelete()} />
+    <div className='delete-notes'><MoreVertOutlinedIcon htmlColor="grey" onClick={handleOpen1} variant="contained" aria-describedby={id1} />
+  
+    <Popover
+        id={id1}
+        open={open1}
+        anchorEl={anchor}
+        onClose={handleClose1}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+      >
 
-      
+        <Typography sx={{ p: 1 }}>
+          <div className='icon-popover' onClick={addisdelete}>
+          
+            Delete Note
+          </div>
+        </Typography>
+      </Popover>
     </div>
   </div>;
 

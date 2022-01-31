@@ -75,7 +75,7 @@ function Takenote(props) {
                 </InputBase></div>
                 <div className='close-button'>
                     <Icons className='icons-set' mode="takenote" archieveChange={()=>archieveChange()} modeone={(data)=>backgroundcolour(data)}/>
-                    <button className='button-icon'  onClick={() => close()}>close</button>
+                    <button className='button-icon' style={{backgroundColor : changecolor}} onClick={() => close()}>close</button>
                 </div>
                 
             </div>

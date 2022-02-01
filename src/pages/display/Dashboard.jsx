@@ -33,22 +33,19 @@ import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
 
 import Popover from '@mui/material/Popover';
 import { useNavigate } from "react-router-dom";
-import NotesService from '../../services/NotesService';
+
 
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link,
-  Outlet
+
 } from "react-router-dom";
 
 import './dashboard.scss'
 import Notes from '../notes/Notes';
 import Archive from '../archive/Archive';
 import IsDeleted from '../isDeleted/IsDeleted';
-
-
 
 
 const drawerWidth = 240;
@@ -127,7 +124,6 @@ export default function MiniDrawer() {
   const navigate = useNavigate();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const [isArchieved,setisArchieved]=React.useState(false)
 
   React.useEffect(() => {
     if (!localStorage.getItem("token")) {
@@ -135,10 +131,7 @@ export default function MiniDrawer() {
     }
   }, [])
 
-
-
   const [anchorEl, setAnchorEl] = React.useState(null);
-
   const handleOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -149,11 +142,6 @@ export default function MiniDrawer() {
   const opens = Boolean(anchorEl);
   const id = opens ? 'simple-popover' : undefined;
 
-const getArchieved=()=>{
-  setisArchieved(true)
-  NotesService.getisArchievd()
-  NotesService.getnotes()
-}
 
   let list = [
     {
@@ -186,25 +174,22 @@ const getArchieved=()=>{
     setOpen(false);
   };
 
-  const signout=()=>{
-    
+  const signout = () => {
     localStorage.clear();
   }
-  const changeroutes=(text)=>{
-    console.log(text);
+  const changeroutes = (text) => {
+
     switch (text) {
       case 'Archive':
         navigate('/archive')
-  
         break;
       case 'Notes':
-      
         navigate('/')
 
         break;
       case 'Bin':
-          navigate('/deleted')
-          break;
+        navigate('/deleted')
+        break;
       default:
         navigate('/')
         break;
@@ -213,109 +198,112 @@ const getArchieved=()=>{
   }
 
   return (
+    <div>
+      <Box sx={{ display: 'flex' }}>
+        <CssBaseline />
+        <div>
+          <AppBar position="fixed" open={open}>
 
- 
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <AppBar position="fixed" open={open}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-          >
-            <MenuIcon />
-          </IconButton>
-          <img className="keep" src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png" alt="keep logo" />
-          <Typography variant="h6" noWrap component="div">
-            Fundoo Notes
-          </Typography>
-          <div className='search'>
-            <IconButton> <SearchIcon /> </IconButton>
-            <input className='search-input' type="text" placeholder='Search' ></input>
+            <Toolbar>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={handleDrawerOpen}
+                edge="start"
+              >
 
-          </div>
-          <div className='hearder'>
-            <ul className="header-icons">
-              <IconButton> <RefreshOutlinedIcon /> </IconButton>
-              <IconButton> <ViewAgendaOutlinedIcon /> </IconButton>
-
-              <IconButton> <SettingsOutlinedIcon /> </IconButton>
-              <IconButton> <AppsOutlinedIcon /></IconButton>
-              <IconButton> <AccountCircleOutlinedIcon onClick={handleOpen} variant="contained" aria-describedby={id} />
-                <Popover
-                  id={id}
-                  open={opens}
-                  anchorEl={anchorEl}
-                  onClose={handleClose}
-                  anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'left',
-                  }}
-                >
-                  <Typography sx={{ p: 2 }} component="span">
-                    <div className='account-details'>
-                      <div className='detail'>
-                      <div className='image-details'></div>
-                     
-                       <h4>Subham Das</h4>
-                      <div>Subham@gmail.com</div>
-                      <div className='manage-account' onClick={signout}>Sign out</div>
-                      </div>
-                      <div className='add-account'>
-                        <div className='add'><PersonAddAltOutlinedIcon/>Add another account</div>
-                      </div>
-                    </div>
-
-                  </Typography>
-                </Popover>
+                <MenuIcon />
 
               </IconButton>
-            </ul>
-          </div>
-        </Toolbar>
-      </AppBar>
-      <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
+              <img className="keep" src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png" alt="keep logo" />
+              <Typography variant="h6" noWrap component="div">
+                Fundoo Notes
+              </Typography>
+              <div className='search'>
+                <IconButton> <SearchIcon /> </IconButton>
+                <input className='search-input' type="text" placeholder='Search' ></input>
 
-        </DrawerHeader>
-        <Divider />
-        <List>
-          {list.map((text, index) => (
-            <ListItem button key={text.text} onClick={()=>changeroutes(text.text)}>
-              <ListItemIcon>
-                {text.icons}
-              </ListItemIcon>
-              <ListItemText primary={text.text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
+              </div>
+              <div className='hearder'>
+                <ul className="header-icons">
+                  <IconButton> <RefreshOutlinedIcon /> </IconButton>
+                  <IconButton> <ViewAgendaOutlinedIcon /> </IconButton>
+                  <IconButton> <SettingsOutlinedIcon /> </IconButton>
+                  <IconButton> <AppsOutlinedIcon /></IconButton>
+                  <IconButton> <AccountCircleOutlinedIcon onClick={handleOpen} variant="contained" aria-describedby={id} />
+                    <Popover
+                      id={id}
+                      open={opens}
+                      anchorEl={anchorEl}
+                      onClose={handleClose}
+                      anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'left',
+                      }}
+                    >
+                      <Typography sx={{ p: 2 }} component="span">
+                        <div className='account-details'>
+                          <div className='detail'>
+                            <div className='image-details'></div>
+                            <h4>Subham Das</h4>
+                            <div>Subham@gmail.com</div>
+                            <div className='manage-account' onClick={signout}>Sign out</div>
+                          </div>
+                          <div className='add-account'>
+                            <div className='add'><PersonAddAltOutlinedIcon />Add another account</div>
+                          </div>
+                        </div>
 
-      </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }} >
-        <DrawerHeader />
-        <Typography className='content-note' component="span" >
+                      </Typography>
+                    </Popover>
+
+                  </IconButton>
+                </ul>
+              </div>
+            </Toolbar>
+          </AppBar>
+
+        </div>
+
+        <div className='side-bar'>
+          <Drawer variant="permanent" open={open}>
+            <DrawerHeader>
+
+            </DrawerHeader>
+            <Divider />
+            <List>
+              {list.map((text, index) => (
+                <ListItem button key={text.text} onClick={() => changeroutes(text.text)}>
+                  <ListItemIcon>
+                    {text.icons}
+                  </ListItemIcon>
+                  <ListItemText primary={text.text} />
+                </ListItem>
+              ))}
+            </List>
+            <Divider />
+          </Drawer>
+        </div>
 
 
-        
+        <Box component="main" sx={{ flexGrow: 1, p: 3 }} >
+          <DrawerHeader />
+          <Typography className='content-note' component="span" >
 
-         <Routes>
-         <Route exact path='/' element={ <Notes/>}/>
-          <Route exact path='/archive' element={ <Archive/>}/>
-          <Route exact path='/deleted' element={ <IsDeleted/>}/>
-      
- 
-          </Routes> 
-        
-       
-          
+            <Routes>
+              <Route exact path='/' element={<Notes />} />
+              <Route exact path='/archive' element={<Archive />} />
+              <Route exact path='/deleted' element={<IsDeleted />} />
 
-        </Typography>
+            </Routes>
+
+          </Typography>
+        </Box>
+
       </Box>
 
-    </Box>
+    </div>
+
 
   );
 }

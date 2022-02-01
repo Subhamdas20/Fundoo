@@ -1,3 +1,4 @@
+$small: 430px;
 .Notes-container{
     display: flex;
     flex-wrap: wrap;
@@ -5,4 +6,10 @@
 }
 .Notes-container >div{
  margin:10px
+}
+@media screen and (max-width :$small ) {
+    .Notes-container{
+        margin-left: 50px;
+    }
+    
 }

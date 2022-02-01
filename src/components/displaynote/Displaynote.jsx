@@ -2,16 +2,10 @@ import React, { useState } from 'react';
 import Icons from '../icons/Icons';
 import './displaynote.scss';
 import NotesService from '../../services/NotesService';
-import Typography from '@mui/material/Typography';
+
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import Backdrop from '@mui/material/Backdrop';
-import Fade from '@mui/material/Fade';
 
-import TextField from '@mui/material/TextField';
-import InputBase from '@mui/material/InputBase';
-import { InputLabel } from '@mui/material';
-import Input from '@mui/material/Input';
 const style = {
   position: 'absolute',
   top: '38%',
@@ -67,14 +61,11 @@ function Displaynote(props) {
 
   const handleOpen = (data) => {
     setNotes(data)
-
     setOpen(true);
     setDialognotes({
       title: data.title,
       description: data.description
     })
-
-
 
   }
   const handleClose = (id) => {
@@ -91,9 +82,6 @@ function Displaynote(props) {
     }).catch((err) => {
     })
   }
-
-  
-
 
   const changeField = (e, id) => {
     setDialognotes(previousvalues => {

@@ -18,11 +18,12 @@ const NotesService = {
     updatenotes: (data) => {
         return AxiosService.updateService(`${url}/notes/updatenotes`,data,header)
     },
-    getisArchievd:() =>{
-
+    getisArchived:() =>{
         return AxiosService.getNotes(`${url}/notes/isArchieved`,header)
+    },
+    getisDeleted:() =>{
+        return AxiosService.getNotes(`${url}/notes/isDeleted`,header)
     }
-    
 }
 
 export default NotesService;

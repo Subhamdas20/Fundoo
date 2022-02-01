@@ -35,8 +35,21 @@ import Popover from '@mui/material/Popover';
 import { useNavigate } from "react-router-dom";
 import NotesService from '../../services/NotesService';
 
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  Outlet
+} from "react-router-dom";
+
 import './dashboard.scss'
 import Notes from '../notes/Notes';
+import Archive from '../archive/Archive';
+import IsDeleted from '../isDeleted/IsDeleted';
+
+
+
 
 const drawerWidth = 240;
 
@@ -115,6 +128,7 @@ export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [isArchieved,setisArchieved]=React.useState(false)
+
   React.useEffect(() => {
     if (!localStorage.getItem("token")) {
       navigate('/signin')
@@ -156,7 +170,7 @@ const getArchieved=()=>{
     },
     {
       text: "Archive",
-      icons: <ArchiveOutlinedIcon onClick={()=>getArchieved()}/>,
+      icons: <ArchiveOutlinedIcon />,
     },
     {
       text: "Bin",
@@ -172,9 +186,35 @@ const getArchieved=()=>{
     setOpen(false);
   };
 
+  const signout=()=>{
+    
+    localStorage.clear();
+  }
+  const changeroutes=(text)=>{
+    console.log(text);
+    switch (text) {
+      case 'Archive':
+        navigate('/archive')
+  
+        break;
+      case 'Notes':
+      
+        navigate('/')
+
+        break;
+      case 'Bin':
+          navigate('/deleted')
+          break;
+      default:
+        navigate('/')
+        break;
+    }
+
+  }
+
   return (
 
-  //  { isArchieved ?  true : false }`
+ 
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
@@ -214,14 +254,14 @@ const getArchieved=()=>{
                     horizontal: 'left',
                   }}
                 >
-                  <Typography sx={{ p: 2 }}>
+                  <Typography sx={{ p: 2 }} component="span">
                     <div className='account-details'>
                       <div className='detail'>
                       <div className='image-details'></div>
                      
                        <h4>Subham Das</h4>
                       <div>Subham@gmail.com</div>
-                      <div className='manage-account'>Manage your account</div>
+                      <div className='manage-account' onClick={signout}>Sign out</div>
                       </div>
                       <div className='add-account'>
                         <div className='add'><PersonAddAltOutlinedIcon/>Add another account</div>
@@ -243,7 +283,7 @@ const getArchieved=()=>{
         <Divider />
         <List>
           {list.map((text, index) => (
-            <ListItem button key={text.text}>
+            <ListItem button key={text.text} onClick={()=>changeroutes(text.text)}>
               <ListItemIcon>
                 {text.icons}
               </ListItemIcon>
@@ -256,9 +296,22 @@ const getArchieved=()=>{
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }} >
         <DrawerHeader />
-        <Typography className='content-note' >
+        <Typography className='content-note' component="span" >
 
-          <Notes />
+
+        
+
+         <Routes>
+         <Route exact path='/' element={ <Notes/>}/>
+          <Route exact path='/archive' element={ <Archive/>}/>
+          <Route exact path='/deleted' element={ <IsDeleted/>}/>
+      
+ 
+          </Routes> 
+        
+       
+          
+
         </Typography>
       </Box>
 

@@ -13,16 +13,18 @@ function Notes() {
         getNotes();
     },[])
 
+
     const getNotes = () => {
         NotesService.getnotes().then((result) => {
-            setNotesarray(result.data.data)
+            let filteredData= result.data.data.filter(data=>data.isArchieved!==true && data.isDeleted!==true)
+            setNotesarray(filteredData)
         }).catch((err) => {
         })
     }
 
     return <div >
     <div ><Takenote getnote={getNotes} /></div>
-    <div className='Notes-container'><Displaynote notesarray={notesarray} getnote={getNotes}/></div>
+    <div className='Notes-container'><Displaynote mode='notes' notesarray={notesarray} getnote={getNotes}/></div>
     </div>;
 }
 

@@ -12,6 +12,17 @@ import TextField from '@mui/material/TextField';
 import InputBase from '@mui/material/InputBase';
 import { InputLabel } from '@mui/material';
 import Input from '@mui/material/Input';
+const style = {
+  position: 'absolute',
+  top: '38%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 600,
+  bgcolor: '#ffffff',
+  border: '1px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
 function Displaynote(props) {
   const [open, setOpen] = React.useState(false);
   const [dialognotes, setDialognotes] = useState({
@@ -26,7 +37,6 @@ function Displaynote(props) {
     isArchieved:"",
     isDeleted:"",
     color:"#ffffff"
-
   })
 
   const changeColor = () => {
@@ -64,14 +74,14 @@ function Displaynote(props) {
       description: data.description
     })
 
-    // console.log(notes);
+
 
   }
   const handleClose = (id) => {
-    console.log(id, dialognotes._id , "inside closeeee");
+  
     setOpen(false);
     let data = {
-      // '_id':dialognotes._id,
+      
       '_id': id,
       'title': dialognotes.title,
       'description': dialognotes.description
@@ -82,32 +92,21 @@ function Displaynote(props) {
     })
   }
 
-  const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 600,
-    bgcolor: '#ffffff',
-    border: '1px solid #000',
-    boxShadow: 24,
-    p: 4,
-  };
+  
 
 
   const changeField = (e, id) => {
     setDialognotes(previousvalues => {
       return { ...previousvalues, [e.target.name]: e.target.value, '_id': id }
     })
-    console.log(dialognotes);
+
   }
 
-  if (props.notesarray) {
     return (
       <div className='displaynote-container'>
         { props.notesarray.map((notes, index) => {
-          if (!notes.isArchieved & !notes.isDeleted) {
-           return <div className='main-display'  >
+
+           return <div className='main-display' key={index} >
               <div className='wrap' >
                 <div className='container-displaynote' style={{ backgroundColor: notes.color }}>
                   <div onClick={() => handleOpen(notes)}  >
@@ -119,7 +118,7 @@ function Displaynote(props) {
 
               </div>
             </div>
-          }
+         
         })
         }
         <Modal
@@ -127,7 +126,7 @@ function Displaynote(props) {
       onClose={() => handleClose(notes._id)
       }
     >
-      <Box sx={{ ...style, width: 500 }}  style={{ backgroundColor: notes.color }}>
+      <Box sx={{ ...style, width: 600 }}  style={{ backgroundColor: notes.color }}>
         <div className='modal-input'>
           <input name='title' className='title-modal' onChange={(e) => { changeField(e, notes._id) }} defaultValue={dialognotes.title}  style={{ backgroundColor: notes.color }}/>
           <input name='description' className='description-modal' onChange={(e) => { changeField(e, notes._id) }} defaultValue={dialognotes.description} style={{ backgroundColor: notes.color }} />
@@ -140,7 +139,7 @@ function Displaynote(props) {
        
     </div> 
     )
-  }
+  // }
 
 }
 export default Displaynote;

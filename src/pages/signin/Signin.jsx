@@ -19,7 +19,7 @@ function Signin() {
         setFields(previousvalues => {
             return { ...previousvalues, [e.target.name]: e.target.value }
         })
-        console.log(fields);
+       
     }
 
     const validation = () => {
@@ -41,9 +41,14 @@ function Signin() {
                 "password": fields.password,
             }
             UserService.signin(data).then((res) => {
+                localStorage.setItem("firstname",res.data.data.firstname)
+             
+                localStorage.setItem("lastname",res.data.data.lastname)
+                localStorage.setItem("email",res.data.data.email)
                 localStorage.setItem("token", res.data.data.token)
                 localStorage.setItem("id",res.data.data.userId)
-                navigate('/dashboard')
+              
+                navigate('/')
             }).catch((res) => {
             })
             

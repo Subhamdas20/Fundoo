@@ -46,6 +46,7 @@ import './dashboard.scss'
 import Notes from '../notes/Notes';
 import Archive from '../archive/Archive';
 import IsDeleted from '../isDeleted/IsDeleted';
+import NotesService from '../../services/NotesService';
 
 
 const drawerWidth = 240;
@@ -124,12 +125,20 @@ export default function MiniDrawer() {
   const navigate = useNavigate();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [useremail, setuseremail] = React.useState("")
+  const [barcolor, setBarcolor] = React.useState("#ffffff")
 
-  React.useEffect(() => {
-    if (!localStorage.getItem("token")) {
-      navigate('/signin')
-    }
-  }, [])
+
+  // React.useEffect(() => {
+  //   if (!localStorage.getItem("token")) {
+  //     navigate('/signin')
+  //   }
+
+  // }, [])
+  
+  const getuseremail = (mailid) => {
+    setuseremail(mailid)
+  }
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const handleOpen = (event) => {
@@ -140,12 +149,13 @@ export default function MiniDrawer() {
     setAnchorEl(null);
   };
   const opens = Boolean(anchorEl);
-  const id = opens ? 'simple-popover' : undefined;
+  const id1 = opens ? 'simple-popover' : undefined;
 
 
   let list = [
     {
-      text: "Notes",
+      text: "Notes"
+      ,
       icons: <LightbulbOutlinedIcon />,
     },
     {
@@ -176,16 +186,22 @@ export default function MiniDrawer() {
 
   const signout = () => {
     localStorage.clear();
+    navigate('/signin')
   }
+
   const changeroutes = (text) => {
 
     switch (text) {
       case 'Archive':
+        setBarcolor("")
+        setBarcolor("#feefc3")
         navigate('/archive')
         break;
       case 'Notes':
+        setBarcolor("")
+        setBarcolor("red")
         navigate('/')
-
+        
         break;
       case 'Bin':
         navigate('/deleted')
@@ -197,13 +213,14 @@ export default function MiniDrawer() {
 
   }
 
+
   return (
     <div>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
-        <div>
+        <div className='header-bar'>
           <AppBar position="fixed" open={open}>
-
+          <div className='bar-app'>
             <Toolbar>
               <IconButton
                 color="inherit"
@@ -230,9 +247,9 @@ export default function MiniDrawer() {
                   <IconButton> <ViewAgendaOutlinedIcon /> </IconButton>
                   <IconButton> <SettingsOutlinedIcon /> </IconButton>
                   <IconButton> <AppsOutlinedIcon /></IconButton>
-                  <IconButton> <AccountCircleOutlinedIcon onClick={handleOpen} variant="contained" aria-describedby={id} />
+                  <IconButton> <AccountCircleOutlinedIcon onClick={handleOpen} variant="contained" aria-describedby={id1} />
                     <Popover
-                      id={id}
+                      id={id1}
                       open={opens}
                       anchorEl={anchorEl}
                       onClose={handleClose}
@@ -244,14 +261,12 @@ export default function MiniDrawer() {
                       <Typography sx={{ p: 2 }} component="span">
                         <div className='account-details'>
                           <div className='detail'>
-                            <div className='image-details'></div>
-                            <h4>Subham Das</h4>
-                            <div>Subham@gmail.com</div>
+                            <div className='image-details'>{(localStorage.getItem("firstname")).charAt(0).toUpperCase()} </div>
+                            <div className='Name'> { localStorage.getItem("firstname") +" "+ localStorage.getItem("lastname")}</div>
+                            <div className='email'>{localStorage.getItem("email")}</div>
                             <div className='manage-account' onClick={signout}>Sign out</div>
                           </div>
-                          <div className='add-account'>
-                            <div className='add'><PersonAddAltOutlinedIcon />Add another account</div>
-                          </div>
+                        
                         </div>
 
                       </Typography>
@@ -261,6 +276,7 @@ export default function MiniDrawer() {
                 </ul>
               </div>
             </Toolbar>
+            </div>
           </AppBar>
 
         </div>
@@ -271,16 +287,21 @@ export default function MiniDrawer() {
 
             </DrawerHeader>
             <Divider />
-            <List>
-              {list.map((text, index) => (
-                <ListItem button key={text.text} onClick={() => changeroutes(text.text)}>
-                  <ListItemIcon>
-                    {text.icons}
-                  </ListItemIcon>
-                  <ListItemText primary={text.text} />
-                </ListItem>
-              ))}
-            </List>
+            <div className='side-navbar'>
+              <List >
+                <div className='bgcolor'   >
+                  {list.map((text, index) => (
+                    <ListItem  button key={text.text} onClick={() => changeroutes(text.text)}>
+                      <ListItemIcon >
+                        {text.icons}
+                      </ListItemIcon>
+                      <ListItemText primary={text.text} />
+                    </ListItem>
+                  ))}
+                </div>
+              </List>
+            </div>
+
             <Divider />
           </Drawer>
         </div>

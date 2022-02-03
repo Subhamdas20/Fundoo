@@ -69,6 +69,9 @@
     .displaynote-container{
         display: flex;
         flex-direction: column;
-        
+        .container-displaynote{
+            width:135%;
+           margin-left: 0px !important;
+        }
     }
 }

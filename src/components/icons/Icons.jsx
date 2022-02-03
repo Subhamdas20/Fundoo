@@ -46,9 +46,10 @@ const addData=(data)=>{
   props.modeone(data)
   }
   else if(props.mode==="display"){
+
     let datas={
       "_id": props.notes._id,
-      "color":data,
+      "color":data,                     //adding color
     }
     NotesService.updatenotes(datas).then((result) => {
      

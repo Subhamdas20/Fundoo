@@ -30,14 +30,15 @@
 }
 
 .account-details{
-    width: 354px;
-    height: auto;
+    width: 280px;
+    height: 230px;
 
     .detail{
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        
     }
     .manage-account{
         width: 90%;
@@ -50,15 +51,21 @@
 
     }
     .image-details{
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 80px;
         height: 80px;
         border-radius: 100%;
         border: 1px solid;
+        font-size: 80px;
+        color: cornsilk;
+        background-color: blueviolet;
     }
     .add-account{
         display: flex;
         justify-content: center;
-        margin-top: 20px;
+        // margin-top: 20px;
         .add{
             width: 60%;
             display: flex;
@@ -66,10 +73,22 @@
             border: 1px solid;
         }
     }
+    .Name{
+        font-weight: 600;
+    }
+
+    .email{
+        font-weight: 600;
+        display: flex;
+        justify-content: center;
+    }
+  
 }
 @media screen and (max-width : 430px) {
     .side-bar{
         position: absolute;
     }
-    
+    .bar-app{
+        width: 185px;
+    }
 }

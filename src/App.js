@@ -26,15 +26,21 @@ function App() {
         <Route path="/signin" element={<Signin />} />
         <Route path="/forgetpassword" element={<Forgetpassword />} />
         <Route path="/forgetemail" element={<Forgetemail />} />
+{/* 
+
+        <ProtectedRoute path="/" component={<MiniDrawer />} >
+
+          <Route exact path="/archive" element={<Archive />} />
+          <Route exact path="/deleted" element={<IsDeleted />} />
+        </ProtectedRoute> */}
 
         <Route path="/" element={<MiniDrawer />}>
 
-          {/* <Route exact path="/dashboard/notes" element={<Notes />} /> */}
           <Route exact path="/archive" element={<Archive />} />
-          <Route exact  path="/deleted" element={<IsDeleted />} />
+          <Route exact path="/deleted" element={<IsDeleted />} />
 
         </Route>
-        {/* <ProtectedRoute  path="/dashboard" component={<MiniDrawer/>}/> */}
+
       </Routes>
     </Router>
   );
